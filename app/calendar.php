@@ -11,7 +11,7 @@
     </head>
     <body>
         <?php include("partials/navbar.php") ?>
-        <h1>Calandar Page</h1>
+        <h1>Calander Page</h1>
     </body>
 
 </html>
