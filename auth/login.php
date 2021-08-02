@@ -5,7 +5,7 @@
     if($_SERVER["REQUEST_METHOD"] == "GET") {
         // Check if message has been set
         if(isset($_GET["message"]) == true) {
-            $message = $_GET["message"];
+            $message = "<p class='message'>" . $_GET["message"] . "</p>";
         }
     }
 
@@ -35,7 +35,7 @@
 
         } else {
             // Username & Password not found
-            $message = "Username & Password not found";
+            $message = "<p class='message'>" . "Username or Password was incorrect"  . "</p>";
         }
     }
 ?>
@@ -54,6 +54,7 @@
                     <h1>Habit Tracker</h1>
                 </div>
                 <div class="form">
+                    <?php echo $message ?>
                     <form action="" method="POST">
                         <div class="input">
                             <p>Email</p>
@@ -70,7 +71,7 @@
                 </div>
             </div>
         </div>
-        <?php echo $message ?>
+        
         
     </body>
 </html>

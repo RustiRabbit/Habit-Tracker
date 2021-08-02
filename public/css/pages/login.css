@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap');
 
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
 html, body {
     width: 100%;
     height: 100%;
@@ -14,6 +20,11 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+.form>form {
+    width: 100%;
 }
 
 .card {
@@ -51,26 +62,41 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+.card .form .message {
+    color: #C14953;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid #C14953;
+    width: 90%;
+    text-align: center;
+
+    margin: 1em;
 }
 
 .card .image>h1 {
     margin: 0;
+    margin-top: 30px;
     color: white;
 }
 
 .input {
     display: flex;
     flex-direction: column;
+    padding: 1em;
 }
 
 .input>p {
     margin: 0;
     color: #C14953;
     font-family: 'Poppins', sans-serif;
+    font-size: 1.5em;
 }
 
 .input>input {
-    font-size: 1.5em;
+    font-size: 1em;
+    padding: 0.8em;
 }
 
 .button {
@@ -83,7 +109,13 @@ html, body {
 
 .button>input {
     background-color: #9BF3F0;
+    font-size: 2em;
+    font-family: 'Poppins', sans-serif;
     border: 0;
+}
+
+.button>input:hover {
+    background-color: #74ebe7;
 }
 
 @media screen and (max-width: 600px) { 
@@ -102,6 +134,7 @@ html, body {
     .card {
         flex-direction: column;
         justify-content: center;
+        width: 100%
     }
 
     .input>p {
@@ -109,8 +142,15 @@ html, body {
     }
 
     .input>input {
-        font-size: 1.5em;
+        font-size: 1em;
         font-family: 'Poppins', sans-serif;
+        -webkit-appearance: none;
+
+    }
+
+    .card .form .message {
+        color: white;
+        border: 0;
     }
 
 }
