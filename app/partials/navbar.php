@@ -2,7 +2,7 @@
     <h1><a href="/app">Habit Tracker</a></h1>
     <div class="menu">
         <p><a href="/app">Dashboard</a></p>
-        <p><a href="/app/calander.php">Calendar</a></p>
+        <p><a href="/app/calendar.php">Calendar</a></p>
         <p><a href="/app/habits.php">Habits</a></p>
     </div>
     <div class="dropdown">
