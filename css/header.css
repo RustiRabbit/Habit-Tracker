@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap');
+
+* {
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background-color: #418dbd;
+
+    border-bottom-right-radius: 1em;
+    border-bottom-left-radius: 1em;
+}
+
+.header h1 {
+    color: white;
+    padding: 0.5em;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header h1 a {
+    text-decoration: none;
+    color: inherit;
+    user-select: none;
+}
+
+.header .menu {
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+    color: white;
+}
+
+.header .menu p {
+    padding: 0.5em;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.header .menu a {
+    text-decoration: none;
+    color: inherit;
+    user-select: none;
+}
+
+.header .menu a:hover {
+    color: #dbdbdb;
+}
+
+
+/* Dropdown */
+.header .dropdown {
+    margin-left: auto;
+    order: 2;
+}
+
+.header .dropdown p {
+    color: white;
+    padding-right: 2em;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Dropdown Content */
+.header .dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 3em;
+}
+
+.header .dropdown .dropdown-content ul {
+    list-style-type: none;
+    list-style-position: inside;
+    padding: 0;
+}
+
+.header .dropdown .dropdown-content ul li {
+    background-color: #b8b1b1;
+    color: white;
+    padding: 0.3em;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.header .dropdown .dropdown-content ul li:hover {
+    background-color: rgb(107, 107, 107);
+}
+
+.header .dropdown .dropdown-content ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* When the dropdown is hovered, show the content */
+.header .dropdown:hover .dropdown-content {
+    display: block;
+}
