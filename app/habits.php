@@ -9,7 +9,7 @@
     <head>
         <title>Habit Tracker</title>
 
-        <link rel="stylesheet" href="/css/pages/habits.css">
+        <link rel="stylesheet" href="/public/css/pages/habits.css">
 
         <?php include("partials/head.php") ?>
     </head>

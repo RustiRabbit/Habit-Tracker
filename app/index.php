@@ -19,7 +19,7 @@
     <head>
         <title>Habit Tracker</title>
 
-        <link rel="stylesheet" href="/css/pages/dashboard.css">
+        <link rel="stylesheet" href="/public/css/pages/dashboard.css">
 
         <?php include("partials/head.php") ?>
     </head>
