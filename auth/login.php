@@ -43,16 +43,34 @@
 <html>
     <head>
         <title>Login Page</title>
+        <link rel="stylesheet" href="/public/css/pages/login.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
     </head>
     <body>
-        <h1>Login</h1>
+        <div class="content">
+            <div class="card">
+                <div class="image">
+                    <h1>Habit Tracker</h1>
+                </div>
+                <div class="form">
+                    <form action="" method="POST">
+                        <div class="input">
+                            <p>Email</p>
+                            <input type="text" id="email" name="email" value="">
+                        </div>
+                        <div class="input">
+                            <p>Password</p>
+                            <input type="password" id="password" name="password" value="">
+                        </div>
+                        <div class="button">
+                            <input type="submit" value="Login">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <?php echo $message ?>
-        <form action="" method="POST">
-            <label for="username">Email:</label><br>
-            <input type="text" id="email" name="email" value=""><br>
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" value=""><br><br>
-            <input type="submit" value="Submit">
-        </form>
+        
     </body>
 </html>
