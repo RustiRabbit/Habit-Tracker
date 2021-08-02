@@ -32,6 +32,8 @@
             <div class="habits">
                 <?php 
                     echo generateHabitElement(1, "Go for a run");
+                    echo generateHabitElement(1, "Go for a run");
+
                 ?>
             </div>
         </div>
