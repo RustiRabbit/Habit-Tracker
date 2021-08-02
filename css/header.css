@@ -15,7 +15,7 @@
     border-bottom-left-radius: 1em;
 }
 
-.header h1 {
+.header>h1 {
     color: white;
     padding: 0.5em;
     font-family: 'Poppins', sans-serif;
@@ -57,7 +57,7 @@
     order: 2;
 }
 
-.header .dropdown p {
+.header .dropdown>p {
     color: white;
     padding-right: 2em;
     font-family: 'Poppins', sans-serif;
