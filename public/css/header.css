@@ -4,96 +4,176 @@
     margin: 0;
 }
 
-.header {
+.icon {
+    display: none;
+    color: white;
+    font-size: 4vh;
+    padding: 2vh; 
+}
+
+.navbar {
     display: flex;
     flex-direction: row;
     align-items: center;
-
     background-color: #418dbd;
 
-    border-bottom-right-radius: 1em;
-    border-bottom-left-radius: 1em;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
-.header>h1 {
-    color: white;
-    padding: 0.5em;
-    font-family: 'Poppins', sans-serif;
-}
-
-.header h1 a {
-    text-decoration: none;
-    color: inherit;
-    user-select: none;
-}
-
-.header .menu {
+.navbar .title {
     display: flex;
     flex-direction: row;
-    padding: 1em;
+    align-items: center;
+}
+
+.navbar .title>h1 {
     color: white;
-}
-
-.header .menu p {
-    padding: 0.5em;
-    font-family: 'Poppins', sans-serif;
-
-}
-
-.header .menu a {
-    text-decoration: none;
-    color: inherit;
-    user-select: none;
-}
-
-.header .menu a:hover {
-    color: #dbdbdb;
-}
-
-
-/* Dropdown */
-.header .dropdown {
-    margin-left: auto;
-    order: 2;
-}
-
-.header .dropdown>p {
-    color: white;
-    padding-right: 2em;
+    padding: 1vh;
     font-family: 'Poppins', sans-serif;
 }
 
-/* Dropdown Content */
-.header .dropdown .dropdown-content {
-    display: none;
-    position: absolute;
-    min-width: 3em;
-}
-
-.header .dropdown .dropdown-content ul {
-    list-style-type: none;
-    list-style-position: inside;
+.navbar .pages>ul {
     padding: 0;
 }
 
-.header .dropdown .dropdown-content ul li {
-    background-color: #b8b1b1;
-    color: white;
-    padding: 0.3em;
+.navbar .pages>ul>li {
+    display: inline-block;
     font-family: 'Poppins', sans-serif;
-    text-align: center;
+    color: white;
+
+    padding: 0.5em;
 }
 
-.header .dropdown .dropdown-content ul li:hover {
+.navbar .pages>ul>li:hover {
+    color: #dbdbdb;
+}
+
+.navbar .pages>ul>li>a {
+    user-select: none;
+    color: inherit;
+    text-decoration: none;
+}
+
+.navbar .mobile-dropdown {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navbar .account-dropdown {
+    color: white;
+}
+
+.navbar .account-dropdown #desktop {
+    padding-right: 2em;
+}
+
+.navbar .account-dropdown #mobile, .navbar .account-dropdown #desktop {
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar .account-dropdown #mobile {
+    display: none;
+}
+
+.navbar .account-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.navbar .account-dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+
+    background-color: #b8b1b1;
+}
+
+.navbar .account-dropdown .dropdown-content ul {
+    list-style-type: none;
+    list-style-position: inside;
+    text-align: center;
+    padding: 0;
+}
+
+.navbar .account-dropdown .dropdown-content ul>li>a {
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar .account-dropdown .dropdown-content>ul>li:hover {
     background-color: rgb(107, 107, 107);
 }
 
-.header .dropdown .dropdown-content ul li a {
-    text-decoration: none;
-    color: inherit;
-}
 
-/* When the dropdown is hovered, show the content */
-.header .dropdown:hover .dropdown-content {
-    display: block;
+@media screen and (max-width: 600px) {
+    .icon {
+        display: block;
+    }
+
+    .drop-hide {
+        display: none;
+    }
+    
+    .drop-show {
+        display: block;
+    }
+
+    #mobile-dropdown, .account-dropdown, .navbar .account-dropdown #mobile {
+        width: 100%;
+    }
+    
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar .title {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .navbar .pages>ul>li {
+        display: block;
+        text-align: center;
+    }
+
+    .navbar .mobile-dropdown {
+        flex-direction: column;
+    }
+
+    .navbar .account-dropdown {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar .account-dropdown #mobile {
+        display: block;
+        text-align: center;
+        border-top: 2px solid;
+        border-color: white;
+    }
+
+    .navbar .account-dropdown #desktop {
+        display: none;
+    }
+
+    .navbar .account-dropdown .dropdown-content {
+        display: block;
+        position: static;
+        background-color: transparent;
+
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .navbar .pages>ul>li, .navbar .account-dropdown .dropdown-content>ul>li {
+        padding: 1vh;
+    }
+
+    .navbar .account-dropdown .dropdown-content>ul>li:hover {
+        background-color: transparent;
+    }
+
 }
