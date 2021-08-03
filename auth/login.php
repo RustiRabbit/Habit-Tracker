@@ -65,6 +65,7 @@
                             <input type="submit" value="Login">
                         </div>
                     </form>
+                    <p>Dont have an account? <a href="#">Sign Up</a></p>
             </div>
         </div>
         

@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #418dbd;
+    background-color: #007CC7;
 
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -87,7 +87,7 @@
     display: none;
     position: absolute;
 
-    background-color: #b8b1b1;
+    background-color: #4DA8DA;
 }
 
 .navbar .account-dropdown .dropdown-content ul {
@@ -104,7 +104,7 @@
 }
 
 .navbar .account-dropdown .dropdown-content>ul>li:hover {
-    background-color: rgb(107, 107, 107);
+    background-color: #618baa;
 }
 
 @keyframes show {
