@@ -6,11 +6,11 @@
     include("../php/CONFIG.php");
 
     function generateHabitElement($id, $name) {
-        return '<div class="habit card"><h1>' . $name . '</h1><a href="#">Complete!</a></div>';
+        return '<div class="habit card"><h1>' . $name . '</h1><a onclick="completeGoal(this)">Complete!</a></div>';
     }
 
     function generateGoalElement($id, $name, $completedTimes) {
-        return '<div class="habit card"><h1>' . $name . '</h1><p>You\'ve completed the goal ' . $completedTimes . ' times</p></div>';
+        return '<div class="habit card"><h1>' . $name . '</h1><p>' . $completedTimes . '</p></div>';
     }
 ?>
 
@@ -25,14 +25,16 @@
     </head>
     <body>
         <?php include("partials/navbar.php") ?>
-        <h1 class="welcome">Welcome <?php echo $user->first ?>!</h1>
+        <h1 class="welcome">Welcome <span><?php echo $user->first ?></span></h1>
 
         <div class="section">
             <h1>Ready to complete a habit?</h1>
             <div class="habits">
                 <?php 
                     echo generateHabitElement(1, "Go for a run");
+                    echo generateHabitElement(1, "Do 10 Pushups");
                     echo generateHabitElement(1, "Go for a run");
+                    echo generateHabitElement(1, "Do 10 Pushups");
 
                 ?>
             </div>
@@ -45,6 +47,19 @@
                 ?>
             </div>
         </div>
+
+        <script>
+            function completeGoal(element) {
+                // TODO - Run PHP API Request
+                
+                element.style.animation="finish 0.5s ease-in-out";
+                window.setTimeout(function() {
+                    element.innerText = "Done!";
+                }, 250)
+            }
+
+        </script>
+
     </body>
 
 </html>
