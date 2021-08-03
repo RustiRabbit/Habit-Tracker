@@ -5,7 +5,7 @@
     if($_SERVER["REQUEST_METHOD"] == "GET") {
         // Check if message has been set
         if(isset($_GET["message"]) == true) {
-            $message = $_GET["message"];
+            $message = "<p class='message'>" . $_GET["message"] . "</p>";
         }
     }
 
@@ -35,7 +35,7 @@
 
         } else {
             // Username & Password not found
-            $message = "Username & Password not found";
+            $message = "<p class='message'>" . "Username or Password was incorrect"  . "</p>";
         }
     }
 ?>
@@ -43,16 +43,33 @@
 <html>
     <head>
         <title>Login Page</title>
+        <link rel="stylesheet" href="/public/css/pages/auth.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
     </head>
     <body>
-        <h1>Login</h1>
-        <?php echo $message ?>
-        <form action="" method="POST">
-            <label for="username">Email:</label><br>
-            <input type="text" id="email" name="email" value=""><br>
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" value=""><br><br>
-            <input type="submit" value="Submit">
-        </form>
+        <div class="content">
+            <div class="card">
+                    <h1>Habit Tracker</h1>
+                    <h3>Login</h3>
+                    <?php echo $message ?>
+                    <form action="" method="POST">
+                        <div class="input">
+                            <p>Email</p>
+                            <input type="text" id="email" name="email" value="">
+                        </div>
+                        <div class="input">
+                            <p>Password</p>
+                            <input type="password" id="password" name="password" value="">
+                        </div>
+                        <div class="button">
+                            <input type="submit" value="Login">
+                        </div>
+                    </form>
+                    <p>Dont have an account? <a href="/auth/signup.php">Sign Up</a></p>
+            </div>
+        </div>
+        
+        
     </body>
 </html>

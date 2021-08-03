@@ -2,38 +2,125 @@
 
 .welcome {
     font-family: 'Poppins', sans-serif;
+}
 
+.section {
+    z-index: 5;
 }
 
 .section>h1 {
     font-family: 'Poppins', sans-serif;
 }
 
-.habits, .goals {
+.section>div {
     display: flex;
     flex-direction: row;
+
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch;
+
+
 }
 
+/* Defualt Card Styling */
 .card {
-    background-color: grey;
-    border-radius: 5px;
+    background-color: #0087c8;
+    border-radius: 20px;
     
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 1em;
+    margin: 0.2em;
 }
 
 .card>h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5em;
+    color: #d0efff;
+
+    text-align: center;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Habits */
+.habit {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.habit>a {
+    color: #d0efff;
+    background-color: #187bcd;
+    border-radius: 20px;
+
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+
+    transition: background-color 0.1s ease-in-out;
+}
+
+
+@keyframes finish {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.habit>a.completed {
+    animation: finish 1s ease-in-out;
+}
+
+.habit>a:hover {
+    background-color: #00acef;
+}
+
+/* Number of times completed */
+
+.habit.card>p {
+    font-family: 'Poppins', sans-serif;
     color: white;
 }
 
-/* Habit Styling */
-.habit>a {
-    background-color: red;
-    padding: 1em;
-    border-radius: 5px;
+.habit.card>p::before {
+    content: "Completed ";
+}
 
-    user-select: none;
-    text-decoration: none;
-    color: inherit;
+.habit.card>p::after {
+    content: " times!";
+}
+
+
+/* Mobile Support */
+@media screen and (max-width: 600px) { 
+    .section>div {
+        flex-direction: column;
+    }
+
+    .card {
+        flex-direction: row;
+        align-items: center;
+        padding: 0.3em;
+    }
+
+    .card>h1 {
+        font-size: 1.3em;
+        padding: 0.8em;
+    }   
+
+    .card>a {
+        margin: 0.5em;
+        padding: 0.6em;
+    }
+
 }

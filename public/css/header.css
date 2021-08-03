@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #418dbd;
+    background-color: #007CC7;
 
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -87,7 +87,7 @@
     display: none;
     position: absolute;
 
-    background-color: #b8b1b1;
+    background-color: #4DA8DA;
 }
 
 .navbar .account-dropdown .dropdown-content ul {
@@ -104,9 +104,24 @@
 }
 
 .navbar .account-dropdown .dropdown-content>ul>li:hover {
-    background-color: rgb(107, 107, 107);
+    background-color: #618baa;
 }
 
+@keyframes show {
+    0% {
+        overflow: hidden;
+        margin: -30%;
+        opacity: 0;
+    }
+    30% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        margin: 0;
+
+    }
+}
 
 @media screen and (max-width: 600px) {
     .icon {
@@ -114,12 +129,19 @@
     }
 
     .drop-hide {
+        opacity: 0;
+        height: 0 !important;
+        display: none;
+    }
+
+    .drop-hide>.mobile-dropdown {
         display: none;
     }
     
     .drop-show {
-        display: block;
+        animation: show 0.5s;
     }
+
 
     #mobile-dropdown, .account-dropdown, .navbar .account-dropdown #mobile {
         width: 100%;

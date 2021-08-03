@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap');
+
+html, body, .content {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.content {
+    background-color: #2a9df4;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: #1167b1;
+    border-radius: 20px;
+
+    width: 50vw;
+}
+
+.card>h1 {
+    color: #d0efff;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.card>h3 {
+    color: #a8dffa;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.input {
+    border-radius: 5px;
+    margin: 2em;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.input>p {
+    color: #d0efff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+.input>input {
+    border-radius: 20px;
+    border: 0;
+    font-size: 1em;
+
+    padding: 0.8em;
+    box-sizing: border-box;
+
+    background-color: #d0efff;
+}
+
+.input>input:focus {
+    outline: none;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+
+    margin: 1em;
+}
+
+.button>input {
+    background-color: #d0efff;
+    border: 0;
+
+    color: #03254c;
+
+    text-decoration: none;
+
+    padding: 0.7em 1.8em 0.7em 1.8em;
+    border-radius: 5px;
+
+    transition: background-color 0.1s ease-in-out;
+}
+
+.button>input:hover {
+    background-color: #2a9df4;
+}
+
+.card>p {
+    text-align: center;
+    color: #d0efff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card>p>a {
+    color: #d0efff;
+}
+
+@media screen and (max-width: 600px) { 
+    .card {
+        width: 100%;
+        background-color: #2a9df4;
+    }
+
+    .card>h1,.card>p, .input>p   {
+        color: #03254c;
+    }
+
+    .button>input {
+        -webkit-appearance: none;
+        font-size: 1em;
+    }
+
+    
+
+}
