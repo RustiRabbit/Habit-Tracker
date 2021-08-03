@@ -12,6 +12,29 @@
     function generateGoalElement($id, $name, $completedTimes) {
         return '<div class="habit card"><h1>' . $name . '</h1><p>You\'ve completed the goal ' . $completedTimes . ' times</p></div>';
     }
+
+    $habits = "";
+    $goals = "";
+    
+    $habits_result 
+
+    $habits_sql = "SELECT * FROM `habits` WHERE `user_id` = " . $_SESSION["id"];
+    $habits_result = $SQL_DB->CreateConnection()->query($habits_sql);
+
+    if ($habits_result->num_rows > 0) {
+        while($row = $habits_result->fetch_assoc()) {
+            $id = $row["id"];
+            $name = $row["name"];
+            $habits .= generateHabitElement($row["id"], $row["name"]);
+            
+            $goals_sql = "SELECT * FROM habits_completed WHERE `habit_id` = " . $id;
+            $goals_result = $SQL_DB->CreateConnection()->query($goals_sql);
+            $goals .= generateGoalElement($id, $name, $goals_result->num_rows);
+        }
+    } else {
+        echo "0 results";
+    }
+    $SQL_DB->CreateConnection()->close();
 ?>
 
 <!DOCTYPE>
@@ -31,18 +54,7 @@
             <h1>Ready to complete a habit?</h1>
             <div class="habits">
                 <?php
-                    $conn = $SQL_DB->CreateConnection();
-                    $sql = "SELECT * FROM `habits` WHERE `user_id` = " . $_SESSION["id"];
-                    $result = $conn->query($sql);
-                
-                    if ($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) {
-                            echo generateHabitElement($row["id"], $row["name"]);
-                        }
-                    } else {
-                        echo "0 results";
-                    }
-                    $conn->close();
+                echo $habits;
                 ?>
             </div>
         </div>
@@ -50,7 +62,7 @@
             <h1>How are you going?</h1>
             <div class="goals">
                 <?php 
-                    echo generateGoalElement(1, "test", 15);
+                    echo $goals;
                 ?>
             </div>
         </div>
