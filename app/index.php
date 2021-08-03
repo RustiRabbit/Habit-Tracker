@@ -30,8 +30,19 @@
         <div class="section">
             <h1>Ready to complete a habit?</h1>
             <div class="habits">
-                <?php 
-                    echo generateHabitElement(1, "Go for a run");
+                <?php
+                    $conn = $SQL_DB->CreateConnection();
+                    $sql = "SELECT * FROM `habits` WHERE `user_id` = " . $_SESSION["id"];
+                    $result = $conn->query($sql);
+                
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo generateHabitElement($row["id"], $row["name"]);
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    $conn->close();
                 ?>
             </div>
         </div>
