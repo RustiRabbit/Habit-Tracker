@@ -107,6 +107,21 @@
     background-color: rgb(107, 107, 107);
 }
 
+@keyframes show {
+    0% {
+        overflow: hidden;
+        margin: -30%;
+        opacity: 0;
+    }
+    30% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        margin: 0;
+
+    }
+}
 
 @media screen and (max-width: 600px) {
     .icon {
@@ -114,12 +129,14 @@
     }
 
     .drop-hide {
-        display: none;
+        opacity: 0;
+        height: 0 !important;
     }
     
     .drop-show {
-        display: block;
+        animation: show 1s;
     }
+
 
     #mobile-dropdown, .account-dropdown, .navbar .account-dropdown #mobile {
         width: 100%;
