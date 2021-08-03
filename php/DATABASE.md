@@ -37,6 +37,6 @@ CREATE TABLE habits_completed (
     habit_id int,
     time_completed bigint,
     PRIMARY KEY (id),
-    FOREIGN KEY (habit_it) REFERENCES habits(id)
+    FOREIGN KEY (habit_id) REFERENCES habits(id)
 );
 
