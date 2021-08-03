@@ -15,8 +15,6 @@
 
     $habits = "";
     $goals = "";
-    
-    $habits_result 
 
     $habits_sql = "SELECT * FROM `habits` WHERE `user_id` = " . $_SESSION["id"];
     $habits_result = $SQL_DB->CreateConnection()->query($habits_sql);
@@ -32,7 +30,8 @@
             $goals .= generateGoalElement($id, $name, $goals_result->num_rows);
         }
     } else {
-        echo "0 results";
+        $habits = "<p>No habits</p>";
+        $goals = "<p>No goals</p>";
     }
     $SQL_DB->CreateConnection()->close();
 ?>
