@@ -50,10 +50,7 @@
     <body>
         <div class="content">
             <div class="card">
-                <div class="image">
                     <h1>Habit Tracker</h1>
-                </div>
-                <div class="form">
                     <?php echo $message ?>
                     <form action="" method="POST">
                         <div class="input">
@@ -68,7 +65,6 @@
                             <input type="submit" value="Login">
                         </div>
                     </form>
-                </div>
             </div>
         </div>
         

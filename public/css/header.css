@@ -134,7 +134,7 @@
     }
     
     .drop-show {
-        animation: show 1s;
+        animation: show 0.5s;
     }
 
 

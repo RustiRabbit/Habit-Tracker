@@ -28,44 +28,27 @@ html, body {
 }
 
 .card {
-    background-color: grey;
     display: flex;
     width: 70%;
     height: 70%;
 
     border-radius: 20px;
+    background-color: #8599D5;
 
-    background-image: url("/public/images/login.jpg");
-    background-position: center;
-}
-
-.card .image {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-}
-
-.card .image>h1 {
-    font-family: 'Poppins', sans-serif;
-}
-
-.card .form {
-    width: 100%;
-    height: 100%;
-
-    background-color: #C9B7AD;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-
-    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    justify-content: flex-start;
 }
 
-.card .form .message {
+.card>h1 {
+    color: whitesmoke;
+    font-family: 'Poppins', sans-serif;
+    font-size: 4em;
+    text-align: center;
+}
+
+.card .message {
     color: #C14953;
     font-family: 'Poppins', sans-serif;
     border: 1px solid #C14953;
@@ -89,7 +72,7 @@ html, body {
 
 .input>p {
     margin: 0;
-    color: #C14953;
+    color: #275b8b;
     font-family: 'Poppins', sans-serif;
     font-size: 1.5em;
 }
@@ -97,7 +80,16 @@ html, body {
 .input>input {
     font-size: 1em;
     padding: 0.8em;
+
+    border-width: 0;
+    border-radius: 20px;
 }
+
+.input>input:focus {
+    outline: none !important;
+    border:1px solid #78CAD2;
+}
+
 
 .button {
     padding-top: 0.9em;
@@ -119,16 +111,20 @@ html, body {
 }
 
 @media screen and (max-width: 600px) { 
-    .card, .card .image, .card .form {
+    .card, .card .form {
         background-color: inherit;
         border-radius: 0;
 
         background-image: none;
     }
 
-    .card .image, .card .form {
+    .card .form {
         width: auto;
         height: auto;
+    }
+
+    .card>h1 {
+        font-size: 3em;
     }
 
     .card {
