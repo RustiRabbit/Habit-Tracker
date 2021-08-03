@@ -43,7 +43,7 @@
 <html>
     <head>
         <title>Login Page</title>
-        <link rel="stylesheet" href="/public/css/pages/login.css">
+        <link rel="stylesheet" href="/public/css/pages/auth.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
     </head>
@@ -51,6 +51,7 @@
         <div class="content">
             <div class="card">
                     <h1>Habit Tracker</h1>
+                    <h3>Login</h3>
                     <?php echo $message ?>
                     <form action="" method="POST">
                         <div class="input">
@@ -65,7 +66,7 @@
                             <input type="submit" value="Login">
                         </div>
                     </form>
-                    <p>Dont have an account? <a href="#">Sign Up</a></p>
+                    <p>Dont have an account? <a href="/auth/signup.php">Sign Up</a></p>
             </div>
         </div>
         

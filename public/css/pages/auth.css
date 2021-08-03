@@ -28,9 +28,16 @@ html, body, .content {
     text-align: center;
 }
 
+.card>h3 {
+    color: #a8dffa;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
 .input {
     border-radius: 5px;
-    margin: 3em;
+    margin: 2em;
 
     display: flex;
     flex-direction: column;
