@@ -131,6 +131,11 @@
     .drop-hide {
         opacity: 0;
         height: 0 !important;
+        display: none;
+    }
+
+    .drop-hide>.mobile-dropdown {
+        display: none;
     }
     
     .drop-show {

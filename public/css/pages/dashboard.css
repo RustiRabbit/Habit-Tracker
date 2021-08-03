@@ -4,8 +4,8 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.welcome>span {
-
+.section {
+    z-index: 5;
 }
 
 .section>h1 {
