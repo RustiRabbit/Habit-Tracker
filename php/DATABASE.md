@@ -34,7 +34,7 @@ CREATE TABLE habits (
 
 CREATE TABLE habits_completed (
     id int NOT NULL AUTO_INCREMENT,
-    habit_it int,
+    habit_id int,
     time_completed bigint,
     PRIMARY KEY (id),
     FOREIGN KEY (habit_it) REFERENCES habits(id)
