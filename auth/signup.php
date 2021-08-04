@@ -1,5 +1,27 @@
 <?php 
+    // Include Database Authentication
     include_once("../php/CONFIG.php");
+
+    // Check that Request is POST
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        $first_name = $_POST["first_name"];
+        $last_name = $_POST["last_name"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+
+        $conn = $SQL_DB->CreateConnection();
+        
+        $sql = "INSERT INTO users (first_name, last_name, email, password) VALUES (\"" . $first_name .  "\", \"" . $last_name . "\", \"" . $email . "\", \"" . $password . "\")";
+        if ($conn->query($sql) === TRUE) {
+            // Means the insert has worked
+            header("Location: /auth/login.php?message=User Account created successfully");
+        } else {
+            // Means the insert has failed
+            header("Location: /auth/login.php?message=User Account failed");
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
