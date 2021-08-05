@@ -1,6 +1,10 @@
 <?php 
     // Check Authentication
     include("partials/auth_check.php");
+
+    function createHabit($id, $name) {
+        return "<p>ID: " . $id . ", Name: " . $name . "</p>";
+    }
     
 ?>
 
