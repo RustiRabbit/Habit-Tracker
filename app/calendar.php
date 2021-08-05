@@ -1,6 +1,6 @@
 <?php 
     // Check Authentication
-    include("partials/auth_check.php")
+    include("partials/auth_check.php");
 ?>
 
 <!DOCTYPE>

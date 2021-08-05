@@ -28,7 +28,7 @@
                 </p>
                 <div class="dropdown-content">
                     <ul>
-                        <li><a href="#">Account Settings</a></li>
+                        <li><a href="/app/acc_settings.php">Account Settings</a></li>
                         <li><a href="/auth/logout.php">Logout</a></li>
                     </ul>
                 </div>

@@ -5,8 +5,8 @@
     // SQL Database
     include("../php/CONFIG.php");
 
-    function createHabit($id, $name) {
-        return "<p>ID: " . $id . ", Name: " . $name . "</p>";
+    function createHabit($id, $name, $desc) {
+        return "<p>ID: " . $id . ", Name: " . $name . "</p><div>Description:" .  $desc ."</div>";
     }
     
     $conn = $SQL_DB->CreateConnection();
@@ -21,7 +21,8 @@
         while($row = $habits_result->fetch_assoc()) { // Loop through the returned rows
             $id = $row["id"];
             $name = $row["name"];
-            $habits .= createHabit($row["id"], $row["name"]); // Add Habit Element to the Page
+            $desc = $row["description"];
+            $habits .= createHabit($row["id"], $row["name"], $row["description"]); // Add Habit Element to the Page
         }
     } else {
         $habits = "<p>No habits</p>";
