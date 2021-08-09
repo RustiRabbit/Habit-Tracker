@@ -8,11 +8,13 @@ const Modal = {
         Modal.Element().className = "popup";
     },
     Open: (id, name, desc) => {
-        console.log(id);
+        console.log([
+            id, name, desc
+        ]);
 
         // Set Textboxes
         const Name = document.getElementById("name").value = name;
-        const Desc = document.getElementById("name").value = desc;
+        const Desc = document.getElementById("description").value = desc;
 
         Modal.Element().className = "popup show";
     }
