@@ -1,12 +1,10 @@
 <?php 
     // Check Authentication
     include("partials/auth_check.php");
-
-    // SQL Database
     include("../php/CONFIG.php");
 
     function createHabit($id, $name, $desc) {
-        return "<p>ID: " . $id . ", Name: " . $name . "</p><div>Description:" .  $desc ."</div>";
+        return '<div class="habit-card"><h3>' . $name . '</h3><div class="icons"><a onclick="Modal.Open(\'' . $id  .'\', \'' . $name .'\', \'' . $desc .'\')"><i class="fa fa-edit"></i></a><a><i class="fa fa-trash"></i></a></div></div>';
     }
     
     $conn = $SQL_DB->CreateConnection();
@@ -29,15 +27,16 @@
     }
     $SQL_DB->CreateConnection()->close();
 ?>
-
-<!DOCTYPE>
 <html>
     <head>
         <title>Habit Tracker</title>
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <?php include("partials/head.php") ?>
         <link rel="stylesheet" href="/public/css/pages/habits.css">
 
-        <?php include("partials/head.php") ?>
+        <script src="/public/js/habits.js"></script>
+
     </head>
     <body>
         <?php include("partials/navbar.php") ?>
@@ -45,9 +44,29 @@
             <h1>Habits</h1>
             <a>Add</a>
         </div>
-        <?php
-        echo $habits;
-        ?>
+        <div class="habits">
+            <?php
+                echo $habits;
+            ?>
+        </div>
+
+        <div class="popup hide" id="popup">
+            <div class="popup-bg">
+                <div class="popup-top">
+                    <h3>Editing</h3>
+                    <a onclick="Modal.Close()">Close</a>
+                </div>
+                <div class="popup-content">
+                    <p>Name: </p><input id="name" type="text">
+                    <p>Description: </p><input id="description" type="text">
+                </div>
+                <div class="popup-bottom">
+                    <a>Save</a>
+                </div>
+                
+            </div>
+        </div>
+
     </body>
 
 </html>
