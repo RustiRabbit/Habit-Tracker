@@ -11,6 +11,8 @@
     
     $conn = $SQL_DB->CreateConnection();
 
+$password = ""
+
 ?>
 
 <!DOCTYPE>
@@ -22,15 +24,16 @@
     <body>
         <?php include("partials/navbar.php") ?>
         <h1>Account Settings</h1>
-        <form>
+        <form action="/app/acc_settings.php">
             <label for="firstname">First name:</label><br>
-            <input type="text" id="firstname" name="firstname"><br>
+            <input type="text" id="firstname" name="firstname" value=<?php echo $user->first?>><br>
             <label for="lastname">Last name:</label><br>
-            <input type="text" id="lastname" name="lastname"><br>
+            <input type="text" id="lastname" name="lastname" value=<?php echo $user->last?>><br>
             <label for="email">Email:</label><br>
-            <input type="text" id="email" name="email"><br>
+            <input type="text" id="email" name="email" value=<?php echo $user->email?>><br>
             <label for="password">Last name:</label><br>
-            <input type="text" id="password" name="password"><br>
+            <input type="text" id="password" name="password" value=<?php echo $user->password?>><br>
+            <input type="submit" value="Save">
         </form>
     </body>
 
