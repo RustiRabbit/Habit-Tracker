@@ -34,30 +34,36 @@
     <body>
         <div class="content">
             <div class="card">
-                <h1>Habit Tracker</h1>
-                <h3>Signup</h3>
-                <form action="" method="POST">
-                    <div class="input">
-                        <p>First Name</p>
-                        <input type="text" id="first_name" name="first_name" value="">
+                <div class="form">
+                    <div class="text">
+                        <h1>Habit Tracker</h1>
                     </div>
-                    <div class="input">
-                        <p>Last Name</p>
-                        <input type="text" id="last_name" name="last_name" value="">
-                    </div>
-                    <div class="input">
-                        <p>Email</p>
-                        <input type="text" id="email" name="email" value="">
-                    </div>
-                    <div class="input">
-                        <p>Password</p>
-                        <input type="password" id="password" name="password" value="">
-                    </div>
-                    <div class="button">
-                        <input type="submit" value="Signup">
-                    </div>
-                </form>
-                <p>Already have an account? <a href="/auth/login.php">Log in</a></p>
+                    <form action="" method="POST">
+                        <h3>Signup</h3>
+
+                        <div class="input">
+                            <p>First Name</p>
+                            <input type="text" id="first_name" name="first_name" value="">
+                        </div>
+                        <div class="input">
+                            <p>Last Name</p>
+                            <input type="text" id="last_name" name="last_name" value="">
+                        </div>
+                        <div class="input">
+                            <p>Email</p>
+                            <input type="text" id="email" name="email" value="">
+                        </div>
+                        <div class="input">
+                            <p>Password</p>
+                            <input type="password" id="password" name="password" value="">
+                        </div>
+                        <div class="button">
+                            <input type="submit" value="Signup">
+                        </div>
+                        <p>Already have an account? <a href="/auth/login.php">Log in</a></p>
+                    </form>
+                </div>
+                
             </div>
         </div>
         
