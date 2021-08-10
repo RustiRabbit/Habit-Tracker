@@ -19,5 +19,6 @@
         // Session Exists
         $user->first = $_SESSION["first"];
         $user->last = $_SESSION["last"];
+        $user->id = $_SESSION["id"];
     }
 ?>
