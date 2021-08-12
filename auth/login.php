@@ -30,6 +30,8 @@
             $_SESSION["id"] = $row["id"];
             $_SESSION["first"] = $row["first_name"];
             $_SESSION["last"] = $row["last_name"];
+            $_SESSION["email"] = $row["email"];
+            $_SESSION["password"] = $row["password"];
 
             header("Location: /app/index.php");
 

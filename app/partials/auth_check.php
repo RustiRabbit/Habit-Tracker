@@ -9,6 +9,8 @@
         public $first;
         public $last;
         public $id;
+        public $email;
+        public $password;
     }
     $user = new User();
     if(isset($_SESSION["id"]) == false) {
@@ -20,5 +22,7 @@
         $user->first = $_SESSION["first"];
         $user->last = $_SESSION["last"];
         $user->id = $_SESSION["id"];
+        $user->email = $_SESSION["email"];
+        $user->password = $_SESSION["password"];
     }
 ?>
