@@ -7,7 +7,7 @@
 
     // Create Helper Functions to create elements
     function generateHabitElement($id, $name) {
-        return '<div class="habit card"><h1>' . $name . '</h1><a onclick="completeGoal(this)">Complete!</a></div>';
+        return '<div class="habit card"><h1>' . $name . '</h1><a onclick="Dashboard.Complete(' . $id .', this)">Complete!</a></div>';
     }
 
     function generateGoalElement($id, $name, $completedTimes) {
@@ -47,6 +47,7 @@
         <title>Habit Tracker</title>
 
         <link rel="stylesheet" href="/public/css/pages/dashboard.css">
+        <script src="/public/js/dashboard.js"></script>
 
         <?php include("partials/head.php") ?>
     </head>
@@ -70,19 +71,6 @@
                 ?>
             </div>
         </div>
-
-        <script>
-            function completeGoal(element) {
-                // TODO - Run PHP API Request
-                
-                element.style.animation="finish 0.5s ease-in-out";
-                window.setTimeout(function() {
-                    element.innerText = "Done!";
-                }, 250)
-            }
-
-        </script>
-
     </body>
 
 </html>
