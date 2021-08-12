@@ -37,8 +37,8 @@ const New = {
         New.Element().className = "popup show";
     },
     Create: () => {
-        const Name = document.getElementById("new-name");
-        const Desc = document.getElementById("new-description");
+        const Name = document.getElementById("new-name").value;
+        const Desc = document.getElementById("new-description").value;
 
         const URL = CREATE_URL + "?" + new URLSearchParams({
             habit_name: Name,
