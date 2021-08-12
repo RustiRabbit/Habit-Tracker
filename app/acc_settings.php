@@ -11,8 +11,8 @@
     
     $conn = $SQL_DB->CreateConnection();
 
-$password = ""
-
+    $sql = "UPDATE `users` SET `first_name` = " . $firstname . "AND `last_name` = " . $lastname . "AND `email` = " . $email . "AND `password` = " . $password . "WHERE `users`.id` = " . $id;
+    $conn->query($sql)
 ?>
 
 <!DOCTYPE>
@@ -31,7 +31,7 @@ $password = ""
             <input type="text" id="lastname" name="lastname" value=<?php echo $user->last?>><br>
             <label for="email">Email:</label><br>
             <input type="text" id="email" name="email" value=<?php echo $user->email?>><br>
-            <label for="password">Last name:</label><br>
+            <label for="password">Password:</label><br>
             <input type="text" id="password" name="password" value=<?php echo $user->password?>><br>
             <input type="submit" value="Save">
         </form>
