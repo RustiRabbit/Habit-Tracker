@@ -1,7 +1,25 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { createCalander } from '../../logic/calendarSlice';
 import Day from './Day';
 
 export default function Calender() {
+    const Data = useSelector(createCalander);
+
+    const Elements = Data.weeks.map((week) => {
+        const days = week.days.map((day) => {
+            return (
+                <td key={day.dateNumber}>{day.dateNumber}</td>
+            )
+        })
+
+        return (
+            <tr key={week.number}>
+                {days}
+            </tr>
+        )
+    })
+
     return (
         <div>
             <table>
@@ -16,6 +34,9 @@ export default function Calender() {
                         <th>Sunday</th>
                     </tr>
                 </thead>
+                <tbody>
+                    {Elements}
+                </tbody>
             </table>
         </div>
     );
