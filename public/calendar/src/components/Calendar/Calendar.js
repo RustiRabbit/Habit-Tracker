@@ -3,7 +3,9 @@ import { useSelector } from 'react-redux';
 import { createCalander } from '../../logic/calendarSlice';
 import Day, {DayOutsideMonth} from './Day';
 
-export default function Calender() {
+import "../../scss/calendar.scss";
+
+export default function Calendar() {
     const Data = useSelector(createCalander);
 
     const Elements = Data.weeks.map((week) => {
@@ -26,10 +28,10 @@ export default function Calender() {
     })
 
     return (
-        <div>
+        <div className="cal-body">
             <table>
                 <thead>
-                    <tr>
+                    <tr className="cal-title">
                         <th>Monday</th>
                         <th>Tuesday</th>
                         <th>Wednesday</th>

@@ -1,13 +1,66 @@
-.cal-day {
-    padding: 1em;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap');
 
-    p {
-        text-align: center;
-    }
+$day-bg: #eae8e8;
+$day-hover-bg: #c9c6c6;
+
+/* Top Navigation Bar */
+.cal-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .cal-title {
+        font-size: 3em;
+        font-family: 'Poppins', sans-serif;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }    
 }
 
-.outside {
-    p {
-        color: red;
+.cal-body {
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+
+    .cal-title {
+        th {
+            font-family: 'Poppins', sans-serif;
+            padding: 2em;
+        }
     }
+
+    .cal-day {
+        padding: 1em;
+    
+        background-color: $day-bg;
+        border-radius: 10px;
+
+        transition: background-color 0.2s ease-in-out;
+    
+        p {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+    
+        &.outside {
+            p {
+                color: red;
+            }
+        }
+
+        &:hover {
+            background-color: $day-hover-bg;
+        }
+    }
+    
 }
+
+
+
+

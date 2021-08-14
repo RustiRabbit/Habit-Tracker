@@ -9,12 +9,10 @@ import "../scss/navigation.scss";
 export default function Navigation() {
     const Dispatch = useDispatch();
     const Current = useSelector(selectCurrent);
-    const Selector = useSelector(createCalander);
     const Display = format(new Date(Current.year, Current.month), "MMMM, yyyy")
 
     const Decrement = () => {
         Dispatch(updatePosition(new Date(Current.year, Current.month - 1).toJSON()))
-
     }
 
     const Increment = () => {
