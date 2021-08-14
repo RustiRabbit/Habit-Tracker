@@ -6,7 +6,7 @@ import Application from "./components/Application";
 import { updatePosition } from './logic/calendarSlice';
 import { store } from './logic/store';
 
-store.dispatch(updatePosition(new Date().toJSON()));
+store.dispatch(updatePosition(new Date(2021, 0, 1).toJSON()));
 
 ReactDOM.render(
     <React.StrictMode>

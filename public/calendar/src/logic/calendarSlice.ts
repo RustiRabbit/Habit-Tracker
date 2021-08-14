@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { RootState } from './store';
 
-import { getISOWeek, getMonth, getYear, startOfWeek, addWeeks, format, addDays } from "date-fns";
+import { getISOWeek, getMonth, getYear, startOfWeek, addWeeks, format, addDays, endOfWeek, isMonday, differenceInDays, differenceInWeeks } from "date-fns";
+import Day from '../components/Calendar/Day';
 
 interface CalendarState {
     current: {
@@ -46,41 +47,60 @@ interface Week {
 }
 
 interface Day {
-    dateNumber: number 
+    dateNumber: number,
+    inMonth: boolean
 }
 
+// This function creates the calendar object that React can use to display the calendar
 export const createCalander = (state: RootState) => {
     let calendar: Calander = {
         weeks: []
     }
 
-    const weekStart = getISOWeek(new Date(state.calander.current.year, state.calander.current.month));
-    const weekEnd = getISOWeek(new Date(state.calander.current.year, state.calander.current.month+1));
+    // Create First Day
+    let FirstDay = new Date(state.calander.current.year, state.calander.current.month);
+    FirstDay = startOfWeek(FirstDay, {weekStartsOn: 1}); // Get actual start of week
+    
+    // Create Last Day
+    let LastDay = new Date(state.calander.current.year, state.calander.current.month + 1); // Get one month ahead
+    if(isMonday(LastDay) == true) { // If the start of the next month is a monday, then you don't need to have that week added to the calendar
+        LastDay = addDays(LastDay,-1);
+    } else {
+        LastDay = endOfWeek(LastDay, {weekStartsOn: 1});
+    }
 
-    const numberOfWeeks = weekEnd - weekStart;
-    //console.log(format(startOfWeek(new Date(state.calander.current.year, state.calander.current.month), {weekStartsOn: 1}), "d, MMM"));
+    // Loop through through each week
+    for(var i = 0; i < differenceInWeeks(LastDay, FirstDay) + 1; i++) {
+        // Get the monday of the current week based on the number of weeks into the month
+        let WeekDate = addWeeks(FirstDay, i);
 
-
-    for(var i = 0; i < numberOfWeeks; i++) {
-        const weekNumber = weekStart + i;
+        // Create the week object
         let week: Week = {
-            number: weekNumber,
+            number: getISOWeek(WeekDate), // Set the week number basd based on the first day of the week
             days: []
         };
 
-        // Get first day of week
-        let FirstDay = new Date(state.calander.current.year, 0, 1); // Set to this year
-        FirstDay = addWeeks(FirstDay, weekNumber);
-        FirstDay = startOfWeek(FirstDay, {weekStartsOn: 1});
+        // Loop through each day in the week (7 days in a week)
+        for(var l = 0; l < 7; l++) {
+            let DayDate = addDays(WeekDate, l); // Get the current day by adding the number of days inside the week
 
-        for(var dayNumber = 0; dayNumber < 7; dayNumber++) {
-            let day: Day = {
-                dateNumber: parseInt(format(addDays(FirstDay, dayNumber), 'dd'))
+            // Checks if the day is inside the selected month
+            let inMonth = true;
+            if (parseInt(format(DayDate, "M")) != state.calander.current.month + 1) { // +1 required as computers store the first month as zero, but humans store the first number as one
+                inMonth = false;
             }
 
+            // Create Day Object
+            let day: Day = {
+                dateNumber: parseInt(format(DayDate, "dd")), // Current Day
+                inMonth: inMonth
+            };
+
+            // Add to the current week
             week.days.push(day);
         }
 
+        // Add the week to the calender month
         calendar.weeks.push(week);
     }
 
