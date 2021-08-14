@@ -9,7 +9,7 @@
 
 <div class="navbar">
     <div class="title">
-        <h1>Habit Tracker</h1>
+        <h1><a href="/app">Habit Tracker</a></h1>
         <a onclick="toggle()" class="icon">&#9776;</a>
     </div>
     <div id="mobile-dropdown" class="drop-hide" style="flex-grow: 1;">
