@@ -52,10 +52,15 @@
     <body>
         <div class="content">
             <div class="card">
-                    <h1>Habit Tracker</h1>
-                    <h3>Login</h3>
+                <div class="message">
                     <?php echo $message ?>
+                </div>
+                <div class="form">
+                    <div class="text">
+                        <h1>Habit Tracker</h1>
+                    </div>
                     <form action="" method="POST">
+                        <h3>Login</h3>
                         <div class="input">
                             <p>Email</p>
                             <input type="text" id="email" name="email" value="">
@@ -67,8 +72,10 @@
                         <div class="button">
                             <input type="submit" value="Login">
                         </div>
+                        <p>Dont have an account? <a href="/auth/signup.php">Sign Up</a></p>
                     </form>
-                    <p>Dont have an account? <a href="/auth/signup.php">Sign Up</a></p>
+                </div>
+                
             </div>
         </div>
         
