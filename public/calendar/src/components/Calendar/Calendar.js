@@ -1,27 +1,27 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { createCalander } from '../../logic/calendarSlice';
+import { selectCalendar } from '../../logic/calendarSlice';
 import Day, {DayOutsideMonth} from './Day';
 
 export default function Calender() {
-    const Data = useSelector(createCalander);
+    const Data = useSelector(selectCalendar);
 
     const Elements = Data.weeks.map((week) => {
         const days = week.days.map((day) => {
             if(day.inMonth == false) {
                 return (
-                    <DayOutsideMonth key={day.dateNumber} day={day.dateNumber}/>
+                    <DayOutsideMonth key={day.dateNumber} day={day.dateNumber} habits={day.habits}/>
                 )
             }
             return (
-                <Day key={day.dateNumber} day={day.dateNumber} />
+                <Day key={day.dateNumber} day={day.dateNumber} habits={day.habits}/>
             )
         })
 
         return (
             <tr key={week.number}>
                 {days}
-            </tr>
+            </tr>   
         )
     })
 

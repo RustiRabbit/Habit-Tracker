@@ -1,22 +1,27 @@
 import React from 'react';
+import { connect, useSelector } from 'react-redux';
 import Calender from './Calendar/Calendar';
 import Navigation from './Navigation';
 
-class Application extends React.Component {
-    constructor(props) {
-        super(props);
+import { selectStatus } from '../logic/calendarSlice';
 
-        
-    }
+export default function Application(props) {
+    const Loaded = useSelector(selectStatus);
 
-    render() {
+    if(Loaded == "loading") {
+        return (
+            <p>Loading Calendar</p>
+        )
+    } else {
         return (
             <div>
                 <Navigation />
                 <Calender />
             </div>
-        );
+        )
     }
+
+
 }
 
-export default Application;
+
