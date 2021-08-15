@@ -3,6 +3,8 @@
 $day-bg: #eae8e8;
 $day-hover-bg: #c9c6c6;
 
+$breakpoint-tablet: 400px;
+
 /* Top Navigation Bar */
 .cal-nav {
     display: flex;
@@ -17,6 +19,12 @@ $day-hover-bg: #c9c6c6;
         display: flex;
         align-items: center;
         flex-direction: column;
+
+        text-align: center;
+
+        @media (max-width: $breakpoint-tablet) {
+            font-size: 1em;
+        }
     }    
 }
 
@@ -32,6 +40,21 @@ $day-hover-bg: #c9c6c6;
         th {
             font-family: 'Poppins', sans-serif;
             padding: 2em;
+
+            @media  (max-width: $breakpoint-tablet) {
+                &::first-letter {
+                    display: block;
+                    color: red;
+                    text-align: center;
+                }
+
+                & {
+                    color: blue;
+                    display: none;
+                }
+                padding: 0;
+
+            }
         }
     }
 
@@ -57,10 +80,11 @@ $day-hover-bg: #c9c6c6;
         &:hover {
             background-color: $day-hover-bg;
         }
+
+        @media  (max-width: $breakpoint-tablet) {
+            padding: 0;
+            background-color: red;
+        }
     }
     
 }
-
-
-
-

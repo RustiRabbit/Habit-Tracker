@@ -4,7 +4,7 @@ import { createCalander, selectCurrent, updatePosition } from '../logic/calendar
 
 import { format } from "date-fns";
 
-import "../scss/navigation.scss";
+import "../scss/calendar.scss";
 
 export default function Navigation() {
     const Dispatch = useDispatch();
