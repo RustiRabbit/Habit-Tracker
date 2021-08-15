@@ -19,6 +19,7 @@
         header("Location: /auth/login.php?message=You must log in first");
     } else {
         // Session Exists
+        $user->id = $_SESSION["id"];
         $user->first = $_SESSION["first"];
         $user->last = $_SESSION["last"];
         $user->id = $_SESSION["id"];
