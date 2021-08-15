@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectCalendar } from '../../logic/calendarSlice';
-import Day, {DayOutsideMonth} from './Day';
+import Day from './Day';
 
 export default function Calender() {
     const Data = useSelector(selectCalendar);
@@ -10,11 +10,11 @@ export default function Calender() {
         const days = week.days.map((day) => {
             if(day.inMonth == false) {
                 return (
-                    <DayOutsideMonth key={day.dateNumber} day={day.dateNumber} habits={day.habits}/>
+                    <Day key={day.dateNumber} outside={true} display={day.display} day={day.dateNumber} habits={day.habits}/>
                 )
             }
             return (
-                <Day key={day.dateNumber} day={day.dateNumber} habits={day.habits}/>
+                <Day key={day.dateNumber} display={day.display} day={day.dateNumber} habits={day.habits}/>
             )
         })
 

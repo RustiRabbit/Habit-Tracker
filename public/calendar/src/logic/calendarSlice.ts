@@ -22,6 +22,7 @@ interface Week {
 interface Day {
     dateNumber: number,
     inMonth: boolean,
+    display: string,
     habits: Array<Habit>
 }
 
@@ -118,6 +119,7 @@ export const updatePosition = createAsyncThunk(
                 // Create Day Object
                 let day: Day = {
                     dateNumber: parseInt(format(DayDate, "dd")), // Current Day
+                    display: format(DayDate, "EEEE") + ", " + format(DayDate, "do") + " of " + format(DayDate, "MMM") + ", " + format(DayDate, "yyyy"),
                     inMonth: inMonth,
                     habits: DayHabits
                 };
