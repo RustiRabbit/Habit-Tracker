@@ -1,9 +1,9 @@
 import React from 'react';
-import { connect, useSelector } from 'react-redux';
-import Calender from './Calendar/Calendar';
+import { useSelector } from 'react-redux';
 import Navigation from './Navigation';
 
 import { selectStatus } from '../logic/calendarSlice';
+import Calender from './Calendar/Calendar';
 
 export default function Application(props) {
     const Loaded = useSelector(selectStatus);
@@ -16,7 +16,7 @@ export default function Application(props) {
         return (
             <div>
                 <Navigation />
-                <Calendar />
+                <Calender />
             </div>
         )
     }
