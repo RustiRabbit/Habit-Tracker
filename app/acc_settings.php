@@ -8,11 +8,21 @@
     function getDetails($firstname, $lastname, $email, $password) {
         return "<p>ID: " . $id . ", Name: " . $name . "</p><div>Description:" .  $desc ."</div>";
     }
-    
-    $conn = $SQL_DB->CreateConnection();
 
-    $sql = "UPDATE `users` SET `first_name` = " . $firstname . "AND `last_name` = " . $lastname . "AND `email` = " . $email . "AND `password` = " . $password . "WHERE `users`.id` = " . $id;
-    $conn->query($sql)
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $conn = $SQL_DB->CreateConnection();
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $sql = "UPDATE `users` SET `first_name` = '" . $firstname . "', `last_name` = '" . $lastname . "', `email` = '" . $email . "', `password` = '" . $password . "' WHERE `id` = " . $user->id;
+        echo $sql;
+        $conn->query($sql);
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        echo 'get';
+    } 
 ?>
 
 <!DOCTYPE>
@@ -24,7 +34,7 @@
     <body>
         <?php include("partials/navbar.php") ?>
         <h1>Account Settings</h1>
-        <form action="/app/acc_settings.php">
+        <form action="/app/acc_settings.php" method="POST">
             <label for="firstname">First name:</label><br>
             <input type="text" id="firstname" name="firstname" value=<?php echo $user->first?>><br>
             <label for="lastname">Last name:</label><br>
