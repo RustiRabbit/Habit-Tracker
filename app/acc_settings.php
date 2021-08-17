@@ -5,24 +5,31 @@
     // SQL Database
     include("../php/CONFIG.php");
 
-    function getDetails($firstname, $lastname, $email, $password) {
-        return "<p>ID: " . $id . ", Name: " . $name . "</p><div>Description:" .  $desc ."</div>";
-    }
-
+    // Checks the request method is post
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $conn = $SQL_DB->CreateConnection();
+        $conn = $SQL_DB->CreateConnection(); // Create database connection
+
+        // Gets details from form
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $sql = "UPDATE `users` SET `first_name` = '" . $firstname . "', `last_name` = '" . $lastname . "', `email` = '" . $email . "', `password` = '" . $password . "' WHERE `id` = " . $user->id;
-        echo $sql;
-        $conn->query($sql);
-    }
+        $sql = "UPDATE `users` SET `first_name` = '" . $firstname . "', `last_name` = '" . $lastname . "', `email` = '" . $email . "', `password` = '" . $password . "' WHERE `id` = " . $user->id; // SQL query
+        $conn->query($sql); // Updates database
 
-    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        echo 'get';
-    } 
+        // Updates session
+        $_SESSION["id"] = $user->id;
+        $_SESSION["first"] = $firstname;
+        $_SESSION["last"] = $lastname;
+        $_SESSION["email"] = $email;
+        $_SESSION["password"] = $password;
+
+        // Updates the form
+        $user->first = $firstname;
+        $user->last = $lastname;
+        $user->email = $email;
+        $user->password = $password;
+    }
 ?>
 
 <!DOCTYPE>
