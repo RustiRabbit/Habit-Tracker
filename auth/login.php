@@ -51,16 +51,13 @@
     </head>
     <body>
         <div class="content">
+            <h1>Sign In</h1>
             <div class="card">
                 <div class="message">
                     <?php echo $message ?>
                 </div>
                 <div class="form">
-                    <div class="text">
-                        <h1>Habit Tracker</h1>
-                    </div>
                     <form action="" method="POST">
-                        <h3>Login</h3>
                         <div class="input">
                             <p>Email</p>
                             <input type="text" id="email" name="email" value="">
@@ -70,9 +67,9 @@
                             <input type="password" id="password" name="password" value="">
                         </div>
                         <div class="button">
-                            <input type="submit" value="Login">
+                            <input type="submit" value="Sign In">
+                            <p>Dont have an account? <a href="/auth/signup.php">Sign Up</a></p>
                         </div>
-                        <p>Dont have an account? <a href="/auth/signup.php">Sign Up</a></p>
                     </form>
                 </div>
                 
