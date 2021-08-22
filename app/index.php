@@ -34,7 +34,7 @@
             <div class="goal">
                 <h4>' . $name .'</h4>
                 <div>   
-                    <p>' . $completedTimes .'</p>
+                    <p id="completed-' . $id . '">' . $completedTimes .'</p>
                 </div>
             </div>
         ';

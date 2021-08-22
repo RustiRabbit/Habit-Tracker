@@ -21,6 +21,10 @@ const Dashboard = {
                 // Refresh page to include updated content
                 console.log(element);
                 element.classList = ["completed"];
+
+                // Update Text
+                const Number = document.getElementById("completed-" + id);
+                Number.innerText = (parseInt(Number.innerText) + 1).toString(); 
             } else if(data.message == "error") {
                 console.log("ERROR");
             }
