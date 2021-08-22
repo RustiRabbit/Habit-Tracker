@@ -1,124 +1,110 @@
+:root {
+    --welcome-color: #4D97DB;
+    --welcome-font: "Cabin", sans-serif;
 
+    --content-bg: #FFFFFF;
+    --content-br: 5px;
+
+    --title-font: "Poppins", sans-serif;
+    --title-highlight: #4D97DB;
+
+    --element-bg: #DEDDDD;
+    --element-br: 5px;
+    --element-margin: 0.5em;
+    --element-font: "Poppins", sans-serif;
+    --element-circle-bg: #4D97DB;
+}
+
+/* Generic Styling */
 .welcome {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--welcome-font);
+    letter-spacing: 2px;
+    padding: 2em;
 }
 
-.section {
-    z-index: 5;
+.welcome>h1 {
+    color: var(--welcome-color);
 }
 
-.section>h1 {
-    font-family: 'Poppins', sans-serif;
-}
-
-.section>div {
+.container {
     display: flex;
-    flex-direction: row;
-
-    overflow-y: scroll !important;
-    -webkit-overflow-scrolling: touch;
-
-
+    justify-content: space-around;
 }
 
-/* Defualt Card Styling */
-.card {
-    background-color: #0087c8;
-    border-radius: 20px;
-    
-    padding: 1em;
-    margin: 0.2em;
+.content {
+    background-color: white;
+    border-radius: var(--content-br);
+    width: 40%;
 }
 
-.card>h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5em;
-    color: #d0efff;
-
+.content>h1 {
+    font-family: var(--title-font);
+    font-weight: 500;
     text-align: center;
-
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 
-/* Habits */
-.habit {
+.content>h1>span {
+    color: var(--title-highlight)
+}
+
+.content>.items {
     display: flex;
-    justify-content: center;
     flex-direction: column;
 }
 
-.habit>a {
-    color: #d0efff;
-    background-color: #187bcd;
-    border-radius: 20px;
+/* Element Styling */
+.habit, .goal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-
-    transition: background-color 0.1s ease-in-out;
+    background-color: var(--element-bg);
+    border-radius: var(--element-br);
+    margin: var(--element-margin);
 }
 
-
-@keyframes finish {
-    0% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
+.habit>h4, .goal>h4 {
+    font-family: var(--element-font);
+    width: 80%;
 }
 
-.habit>a.completed {
-    animation: finish 1s ease-in-out;
+/* Habit Styling */
+
+.habit>svg {
+    padding: 1em;
 }
 
-.habit>a:hover {
-    background-color: #00acef;
+#tick {
+    opacity: 0;
 }
 
-/* Number of times completed */
+.completed>#tick {
+    opacity: 1;
+}
 
-.habit.card>p {
-    font-family: 'Poppins', sans-serif;
+/* Goal Styling */
+.goal {
+    justify-content: flex-end;
+}
+
+.goal>h4 {
+    text-align: right;
+}
+
+.goal>div {
+    width: 32px;
+    height: 32px;
+    background-color: var(--element-circle-bg);
+    border-radius: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 1em;
+}
+
+.goal>div>p {
     color: white;
-}
-
-.habit.card>p::before {
-    content: "Completed ";
-}
-
-.habit.card>p::after {
-    content: " times!";
-}
-
-
-/* Mobile Support */
-@media screen and (max-width: 600px) { 
-    .section>div {
-        flex-direction: column;
-    }
-
-    .card {
-        flex-direction: row;
-        align-items: center;
-        padding: 0.3em;
-    }
-
-    .card>h1 {
-        font-size: 1.3em;
-        padding: 0.8em;
-    }   
-
-    .card>a {
-        margin: 0.5em;
-        padding: 0.6em;
-    }
+    font-family: var(--element-font);
 }

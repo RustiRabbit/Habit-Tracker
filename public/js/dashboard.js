@@ -19,10 +19,8 @@ const Dashboard = {
         .then(data => {
             if(data.message == "ok") {
                 // Refresh page to include updated content
-                element.style.animation="finish 0.5s ease-in-out";
-                window.setTimeout(function() {
-                    element.innerText = "Done!";
-                }, 250)
+                console.log(element);
+                element.classList = ["completed"];
             } else if(data.message == "error") {
                 console.log("ERROR");
             }
