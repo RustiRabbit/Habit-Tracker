@@ -14,10 +14,10 @@ const Dashboard = {
                 console.log("redirect");
                 window.location.replace(response.url)
             }
-            return response.json();
+            return response.text();
         })
         .then(data => {
-            if(data.message == "ok") {
+            if(data == "ok") {
                 // Refresh page to include updated content
                 console.log(element);
                 element.classList = ["completed"];
@@ -25,8 +25,8 @@ const Dashboard = {
                 // Update Text
                 const Number = document.getElementById("completed-" + id);
                 Number.innerText = (parseInt(Number.innerText) + 1).toString(); 
-            } else if(data.message == "error") {
-                console.log("ERROR");
+            } else {
+                alert("Error: " + data);
             }
         });
     }
