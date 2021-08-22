@@ -1,6 +1,7 @@
 :root {
     --title-color: #4D97DB;
     --title-size: 1.7em;
+    --add-size: 40px;
 
     --habit-bg: #F9F9F9;
     --habit-br: 5px;
@@ -56,6 +57,13 @@
 .title>a {
     position: fixed;
     right: 0;
+    padding-right: 1em;
+}
+
+.title>a>svg {
+    fill: var(--title-color);
+    width: var(--add-size);
+    height: var(--add-size);
 }
 
 #empty {
