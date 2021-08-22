@@ -1,20 +1,19 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createCalander, selectCurrent, updatePosition } from '../logic/calendarSlice';
+import { selectCalendar, selectCurrent, updatePosition } from '../logic/calendarSlice';
 
 import { format } from "date-fns";
 
-import "../scss/navigation.scss";
+import "../scss/calendar.scss";
 
 export default function Navigation() {
     const Dispatch = useDispatch();
     const Current = useSelector(selectCurrent);
-    const Selector = useSelector(createCalander);
+    const Selector = useSelector(selectCalendar);
     const Display = format(new Date(Current.year, Current.month), "MMMM, yyyy")
 
     const Decrement = () => {
         Dispatch(updatePosition(new Date(Current.year, Current.month - 1).toJSON()))
-
     }
 
     const Increment = () => {

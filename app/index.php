@@ -5,13 +5,42 @@
     // SQL Database
     include("../php/CONFIG.php");
 
-    // Create Helper Functions to create elements
-    function generateHabitElement($id, $name) {
-        return '<div class="habit card"><h1>' . $name . '</h1><a onclick="Dashboard.Complete(' . $id .', this)">Complete!</a></div>';
+    function generateHabitElement($id, $name, $completed) {
+        $class = "";
+        if($completed == true) {
+            $class = "completed";
+        }
+
+        $html = '
+            <div class="habit">
+                <svg class="' . $class . '" width="32" height="32" viewBox="0 0 32 32" fill="none" onclick="Dashboard.Complete(' .  $id . ', this)">
+                    <circle cx="16" cy="16" r="14" fill="#C4C4C4" stroke="#4D97DB" stroke-width="4"/>
+                    <g id="tick">
+                        <circle cx="16" cy="16" r="14" fill="#4D97DB"/>    
+                        <line x1="7.06066" y1="15.9393" x2="14.0607" y2="22.9393" stroke="#C4C4C4" stroke-width="3"/>
+                        <line x1="11.9393" y1="22.9393" x2="25.9393" y2="8.93934" stroke="#C4C4C4" stroke-width="3"/>    
+                    </g>
+                </svg>
+                <h4>' . $name . '</h4>
+            </div>
+        ';
+
+        return $html;
     }
 
+
     function generateGoalElement($id, $name, $completedTimes) {
-        return '<div class="habit card"><h1>' . $name . '</h1><p>' . $completedTimes . '</p></div>';
+        $html = '
+            <div class="goal">
+                <h4>' . $name .'</h4>
+                <div>   
+                    <p id="completed-' . $id . '">' . $completedTimes .'</p>
+                </div>
+            </div>
+        ';
+        
+        return $html;
+    
     }
 
     $habits = "";
@@ -25,7 +54,7 @@
         while($row = $habits_result->fetch_assoc()) { // Loop through the returned rows
             $id = $row["id"];
             $name = $row["name"];
-            $habits .= generateHabitElement($row["id"], $row["name"]); // Add Habit Element to the Page
+            $habits .= generateHabitElement($row["id"], $row["name"], false); // Add Habit Element to the Page
             
             $goals_sql = "SELECT * FROM habits_completed WHERE `habit_id` = " . $id; // Second SQL Request to get indiviual number of times completed
             $goals_result = $SQL_DB->CreateConnection()->query($goals_sql); // Query the Database
@@ -53,24 +82,27 @@
     </head>
     <body>
         <?php include("partials/navbar.php") ?>
-        <h1 class="welcome">Welcome <span><?php echo $user->first ?></span></h1>
+        <div class="welcome">
+            <h3>Welcome,</h3>
+            <h1><?php echo $name ?></h1>
+        </div>
 
-        <div class="section">
-            <h1>Ready to complete a habit?</h1>
-            <div class="habits">
-                <?php
-                echo $habits;
-                ?>
+        <div class="container">
+            <div class="content">
+                <h1>Complete a <span>habit!</span></h1>
+                <div class="items">
+                    <?php echo $habits ?>
+                </div>
+            </div>
+
+            <div class="content">
+                <h1>How are you <span>going?</span></h1>
+                <div class="items">
+                    <?php echo $goals ?>
+                </div>
             </div>
         </div>
-        <div class="section">
-            <h1>How are you going?</h1>
-            <div class="goals">
-                <?php 
-                    echo $goals;
-                ?>
-            </div>
-        </div>
+        
     </body>
 
 </html>

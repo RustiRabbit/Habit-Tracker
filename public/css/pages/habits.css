@@ -1,89 +1,295 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap');
+:root {
+    --title-color: #4D97DB;
+    --title-size: 1.7em;
+    --add-size: 40px;
 
-.top {
+    --habit-bg: #F9F9F9;
+    --habit-br: 5px;
+    --habit-font: "Poppins", sans-serif;
+    --habit-size: 1.6em;
+    --habit-color: #4D97DB;
+    --habit-hover: #0e7ce2;
+    --habit-icon-size: 30px;
+
+    /* Modal */
+    --modal-bg: #FFFFFF;
+    --modal-br: 5px;
+    
+    --modal-title-font: "Poppins", sans-serif;
+    --modal-title-size: 2em;
+    --modal-underline: #4D97DB;
+
+    --cross-size: 40px;
+
+    --input-title-color:#4D97DB;
+    --input-title-font: "Poppins", sans-serif;
+    
+    --input-border: #4D97DB;
+    --input-bg: #DEDDDD;
+    --input-font-family: "Cabin", sans-serif;
+
+    --frequency-size: 40px;
+    --frequency-unselected: #C4C4C4;
+    --frequency-selected: #4D97DB;
+    --frequency-hover: #999999;
+
+    --save-button: #4D97DB;
+    --save-hover: #63a0da;
+    --delete-button: #DB4D50;
+    --delete-hover: #d36062;
+    --button-br: 5px;
+    --button-color: white;
+    --button-font: "Poppins", sans-serif;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    font-family: "Cabin", sans-serif;
+    font-size: var(--title-size);
+    color: var(--title-color);
+}
+
+.title>a {
+    position: fixed;
+    right: 0;
+    padding-right: 1em;
+}
+
+.title>a>svg {
+    fill: var(--title-color);
+    width: var(--add-size);
+    height: var(--add-size);
+}
+
+#empty {
+    background-color: var(--title-color);
+    font-family: "Cabin", sans-serif;
+    color: white;
+    border-radius: 5px;
+    padding: 0.2em 1.5em;
+
+    transition: background-color 0.1s ease-in-out;
+}
+
+#empty:hover {
+    background-color: #3189db;
+}
+
+.habits {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.habits>.habit {
+    background-color: var(--habit-bg);
+    border-radius: var(--habit-br);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    width: 50%;
+
+    margin: 0.8em;
+} 
+
+.habits>.habit>h1 {
+    margin: 0.5em;
+
+    font-family: var(--habit-font);
+    font-size: var(--habit-size);
+    color: var(--habit-color);
 }
 
-.top>h1 {
-    font-family: 'Poppins', sans-serif; 
-}
+.habits>.habit>a>svg {
+    fill: var(--habit-color);
+    width: var(--habit-icon-size);
+    height: var(--habit-icon-size);
 
-.habit-card {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-
-    background-color: #0087c8;
-    border-radius: 20px;
-
-    width: 30%;
     padding: 1em;
+
+    transition: fill 0.2s ease-in-out;
 }
 
-.habit-card>h3 {
-    color: #d0efff;
-    font-family: 'Poppins', sans-serif;
+.habits>.habit>a>svg:hover {
+    fill: var(--habit-hover);
 }
 
-.icons>a>i {
-    color: #d0efff;
-    font-size: 1.5em;
-}
-
-.icons>a>i:hover {
-    color: #9adcfd;
-}
-
-/* Pop up */
-.popup {
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.2);
 
     display: none;
+}
 
+.modal.show {
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.popup.show {
-    display: flex;
+.modal-content {
+    background-color: var(--modal-bg);
+    border-radius: var(--modal-br);
+
+    width: 50%;
 }
 
-.popup-bg {
-    background-color: #0087c8;
-    border-radius: 20px;
-    padding: 2em;
+.modal-content>.top {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
 
+.modal-content>.top>h1 {
+    font-family: var(--modal-title-font);
+    font-size: var(--modal-title-size);
+    border-bottom: 4px solid var(--modal-underline);
+
+    line-height: 1.3em;
+
+}
+
+.modal-content>.top>a {
+    position: absolute;
+    right: 0;
+}
+
+.modal-content>.top>a>svg {
+    fill: var(--modal-underline);
+    width: var(--cross-size);
+    height: var(--cross-size);
+
+    padding-right: 10px;
+}
+
+/* Input Styling */
+.modal-content>.input>h2 {
+    text-transform: uppercase;
+    color: var(--input-title-color);
+    font-family: var(--input-title-font);
+    padding-left: 10%;
+}
+
+.modal-content>.input>.text {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.popup-top {
+.modal-content>.input>.text>input, .modal-content>.input>.text>textarea {
+    border: 3px solid var(--input-border);
+    background-color: var(--input-bg);
+    font-family: var(--input-font-family);
+    border-radius: 5px;
+    font-size: 1em;
+    width: 80%;
+    box-sizing: border-box;
+    padding: 1em;
+
+    transition: 0.1s box-shadow ease-in-out;
+}
+
+.modal-content>.input>.text>input:hover, .modal-content>.input>.text>textarea:hover {
+    box-shadow: 2px 1px 9px rgba(0, 0, 0, 0.25);
+}
+
+.modal-content>.input>.text>input:focus, .modal-content>.input>.text>textarea:focus {
+    outline: none;
+}
+
+/* Frequency Days */
+.days {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
-.popup-top>h3 {
-    color: #d0efff;
-    font-family: 'Poppins', sans-serif;
+.days>.day {
+    position: relative;
+    text-align: center;
+    color: white;
 }
 
-.popup-content>p {
-    color: #d0efff;
-    font-family: 'Poppins', sans-serif;
+.days>.day>input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+
+    background-color: var(--frequency-unselected);
+    border-radius: 20px;
+    width: var(--frequency-size);
+    height: var(--frequency-size);
+
+    transition: 0.05s background-color ease-in-out;
 }
 
-.popup-bottom {
+.days>.day>span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    pointer-events: none;
+    text-align: center;
+    width: 30px;
+    font-family: var(--habit-font);
+}
+
+.days>.day>input:hover {
+    background-color: var(--frequency-hover);
+}
+
+.days>.day>input:checked {
+    background-color: var(--frequency-selected);
+}
+
+/* Bottom */
+.modal-content>.bottom {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
+
+    padding: 2em;
 }
+
+.modal-content>.bottom>button {
+    text-decoration: none;
+
+    padding: 0.3em 1.5em;
+    border-radius: var(--button-br);
+    color: var(--button-color);
+    font-family: var(--button-font);
+
+    border: 0;
+}
+
+.modal-content>.bottom>#delete {
+    background-color: var(--delete-button);
+}
+
+.modal-content>.bottom>#delete:hover {
+    background-color: var(--delete-hover);
+}
+
+.modal-content>.bottom>#save {
+    background-color: var(--save-button);
+}
+
+.modal-content>.bottom>#save:hover {
+    background-color: var(--save-hover);
+}
+

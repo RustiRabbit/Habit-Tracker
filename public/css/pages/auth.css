@@ -1,151 +1,165 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap');
 
 :root {
-    --background: whitesmoke;
-    --card-background: #007CC7;
-    --card-border: 20px;
+    --bg: #79C3F0;
+    --bg-radius: 10px;
 
-    --font: 'Poppins', sans-serif;
+    --input-color: white;
+    --input-radius: 5px;
+    --input-shadow: 1px 3px 2px rgba(0, 0, 0, 0.25);
+    --input-shadow-select: 2px 6px 8px rgba(0, 0, 0, 0.25);
 
-    --title-color: white;
-    --subtitle-color: #d0efff;
-    
-    --input-bg: #5ea0d6;
-    --input-hover-bg: #81b1d8;
+    --text-color: #4C6085;
+    --text-size: 1.8em;
+    --text-font: 'Poppins', sans-serif;
+
+    --login-bg: #4D97DB;
+    --login-bg-hover: #4f95d6;
+    --login-text: white;
+    --login-radius: 3px;
 }
 
-html, body, .content {
-    width: 100%;
+html, body {
     height: 100%;
     margin: 0;
-
-    background-color: var(--background);
-} 
+}
 
 .content {
+    width: 100%;
+    height: 100%;
+
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.content>h1 {
+    font-size: 72px;
+    font-family: var(--text-font);
+    margin: 0;
 }
 
 .card {
     width: 60%;
     height: 60%;
 
-    background-color: var(--card-background);
-    border-radius: var(--card-border);
-
-    display: flex;
-    flex-direction: column;
+    background-color: var(--bg);
+    border-radius: var(--bg-radius);
 }
 
-.card>.message>p {
-    text-align: center;
-    color: var(--subtitle-color);
-    font-family: var(--font);
-}
-
-.card>.form {
-    width: 100%;
+.card>.form, form {
     height: 100%;
-
-    display: flex;
-}
-
-.card>.form>.text, .card>.form>form {
-    width: 50%;
-}
-
-.card>.form>.text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.card>.form>.text>h1 {
-    color: var(--title-color);
-    font-family: var(--font);
-    
-    text-align: center;
 }
 
 .card>.form>form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-evenly;;
 }
 
-.card>.form>form>h3 {
-    color: var(--subtitle-color);
-    font-family: var(--font);
-    font-size: 2em;
-
+/* Message */
+.card>.message {
     text-align: center;
-    margin: 0;
+    font-family: var(--text-font);
+    color: var(--text-color);
 }
 
-.card>.form>form>p {
-    color: var(--subtitle-color);
-    font-family: var(--font);
-}
-
-.card>.form>form>p>a {
-    color: var(--title-color)
-}
-
-/* Input Styling */
-
-.input {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.input>p {
-    color: var(--subtitle-color);
-    font-family: var(--font);
-    font-size: 1.5em;
-
-    margin: 0;
-
-    width: 100%;
-}
-
-.input>input {
+/* Form Styling */
+form>.input {
     width: 80%;
-    font-family: var(--font);
+}
 
-    background-color: var(--input-bg);
-    border-radius: 20px;
+form>.input>input {
+    width: 100%;
 
+    background-color: var(--input-color);
+    border-radius: var(--input-radius);
+    box-shadow: var(--input-shadow);
     border: 0;
 
     padding: 1em;
 
-    color: var(--subtitle-color);
+    transition: box-shadow 0.1s ease-in-out;
 }
 
-.input>input {
-    outline:none
+form>.input>input:hover {
+    box-shadow: var(--input-shadow-select);
 }
 
-.button>input {
-    font-family: var(--font);
+form>.input>input:focus {
+    outline: none;
+}
+
+form>.input>p {
+    color: var(--text-color);
+    font-size: var(--text-size);
+    font-family: var(--text-font);
+
+    margin: 0.5em 0 0.5em 0;
+}
+
+/* Button */
+form>.button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+form>.button>input {
+    padding: 0.2em 2em;
     font-size: 1.5em;
+    background-color: var(--login-bg);
 
-    color: var(--subtitle-color);
+    color: var(--login-text);
 
-    border-radius: 20px;
     border: 0;
+    border-radius: var(--login-radius);
 
-    background-color: var(--input-bg);
-
-    padding: 0.5em 1.5em 0.5em 1.5em;
+    font-family: var(--text-font);
 }
 
-.button>input:hover {
-    background-color: var(--input-hover-bg);
+form>.button>input:hover {
+    background-color: var(--login-bg-hover);
+}
+
+/* Bottom Text */
+form>.button>p {
+    text-align: center;
+    width: 100%;
+    color: var(--text-color);
+    font-family: var(--text-font);
+
+}
+
+/* Mobile Responsive */
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 95%;
+        height: 70%;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .card>.form>form {
+        justify-content: center;
+    }
+    
+    .card>.form, form {
+        height: auto;
+    }
+    
+    form>.input {
+        width: 90%;
+    }
+    
+    form>.input>input {
+        width: 100%;
+        box-sizing: border-box;
+    }
 }

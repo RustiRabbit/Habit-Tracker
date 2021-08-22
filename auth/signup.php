@@ -33,13 +33,10 @@
     </head>
     <body>
         <div class="content">
+            <h1>Signup</h1>
             <div class="card">
                 <div class="form">
-                    <div class="text">
-                        <h1>Habit Tracker</h1>
-                    </div>
                     <form action="" method="POST">
-                        <h3>Signup</h3>
 
                         <div class="input">
                             <p>First Name</p>
@@ -59,8 +56,9 @@
                         </div>
                         <div class="button">
                             <input type="submit" value="Signup">
+                            <p>Already have an account? <a href="/auth/login.php">Log in</a></p>
+
                         </div>
-                        <p>Already have an account? <a href="/auth/login.php">Log in</a></p>
                     </form>
                 </div>
                 

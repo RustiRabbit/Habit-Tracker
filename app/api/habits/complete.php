@@ -1,4 +1,7 @@
 <?php 
+    // Adds a completed habit into the database
+
+    // Check Authentication
     include("../../partials/auth_check.php");
     include("../../../php/CONFIG.php");
 
