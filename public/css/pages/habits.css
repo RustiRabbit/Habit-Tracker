@@ -46,9 +46,30 @@
     align-items: center;
     justify-content: center;
 
+    position: relative;
+
     font-family: "Cabin", sans-serif;
     font-size: var(--title-size);
     color: var(--title-color);
+}
+
+.title>a {
+    position: fixed;
+    right: 0;
+}
+
+#empty {
+    background-color: var(--title-color);
+    font-family: "Cabin", sans-serif;
+    color: white;
+    border-radius: 5px;
+    padding: 0.2em 1.5em;
+
+    transition: background-color 0.1s ease-in-out;
+}
+
+#empty:hover {
+    background-color: #3189db;
 }
 
 .habits {
@@ -94,7 +115,6 @@
 }
 
 /* Modal */
-
 .modal {
     position: fixed;
     top: 0;
@@ -238,13 +258,15 @@
     padding: 2em;
 }
 
-.modal-content>.bottom>a {
+.modal-content>.bottom>button {
     text-decoration: none;
 
     padding: 0.3em 1.5em;
     border-radius: var(--button-br);
     color: var(--button-color);
     font-family: var(--button-font);
+
+    border: 0;
 }
 
 .modal-content>.bottom>#delete {
