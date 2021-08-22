@@ -8,7 +8,7 @@
     $habit_freq = $_GET["habit_freq"];
 
     $conn = $SQL_DB->CreateConnection();
-    $sql = "INSERT INTO `habits` (`name`,`description`, `user_id`) VALUES ('" . $habit_name ."', '" . $habit_desc . "', '" . $user->id . "')";
+    $sql = 'INSERT INTO `habits` (`name`,`description`, `frequency`, `user_id`) VALUES (\'' . $habit_name . '\', \'' . $habit_desc . '\', \'' . $habit_freq . '\', \'' . $user->id . '\')';
 
     if($conn->query($sql) === TRUE) {
         echo "ok";
