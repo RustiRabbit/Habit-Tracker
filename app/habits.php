@@ -4,7 +4,13 @@
     include("../php/CONFIG.php");
 
     function createHabit($id, $name, $desc) {
-        return '<div class="habit-card"><h3>' . $name . '</h3><div class="icons"><a onclick="Edit.Open(\'' . $id  .'\', \'' . $name .'\', \'' . $desc .'\')"><i class="fa fa-edit"></i></a><a><i class="fa fa-trash"></i></a></div></div>';
+        $html = '
+            <div class="habit">
+                <h1>' . $name . '</h1>
+                <a href="#">' . file_get_contents("../public/images/icons/edit.svg") . '</a>
+            </div>        
+        ';
+        return $html;
     }
     
     $conn = $SQL_DB->CreateConnection();
@@ -39,48 +45,12 @@
     </head>
     <body>
         <?php include("partials/navbar.php") ?>
-        <div class="top">
+        <div class="title">
             <h1>Habits</h1>
-            <a onclick="New.Open()">Add</a>
         </div>
+
         <div class="habits">
-            <?php
-                echo $habits;
-            ?>
-        </div>
-
-        <div class="popup hide" id="edit">
-            <div class="popup-bg">
-                <div class="popup-top">
-                    <h3>Editing</h3>
-                    <a onclick="Edit.Close()">Close</a>
-                </div>
-                <div class="popup-content">
-                    <p>Name: </p><input id="edit-name" type="text">
-                    <p>Description: </p><input id="edit-description" type="text">
-                </div>
-                <div class="popup-bottom">
-                    <a>Save</a>
-                </div>
-                
-            </div>
-        </div>
-
-        <div class="popup hide" id="create">
-            <div class="popup-bg">
-                <div class="popup-top">
-                    <h3>Create</h3>
-                    <a onclick="New.Close()">Close</a>
-                </div>
-                <div class="popup-content">
-                    <p>Name: </p><input id="new-name" type="text">
-                    <p>Description: </p><input id="new-description" type="text">
-                </div>
-                <div class="popup-bottom">
-                    <a onclick="New.Create()">Create</a>
-                </div>
-                
-            </div>
+            <?php echo $habits; ?>
         </div>
 
     </body>

@@ -1,89 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap');
+:root {
+    --title-color: #4D97DB;
+    --title-size: 1.8em;
 
-.top {
+    --habit-bg: #F9F9F9;
+    --habit-br: 5px;
+    --habit-font: "Poppins", sans-serif;
+    --habit-size: 1.6em;
+    --habit-color: #4D97DB;
+    --habit-hover: #0e7ce2;
+    --habit-icon-size: 30px;
+
+}
+
+.title {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.top>h1 {
-    font-family: 'Poppins', sans-serif; 
-}
-
-.habit-card {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-
-    background-color: #0087c8;
-    border-radius: 20px;
-
-    width: 30%;
-    padding: 1em;
-}
-
-.habit-card>h3 {
-    color: #d0efff;
-    font-family: 'Poppins', sans-serif;
-}
-
-.icons>a>i {
-    color: #d0efff;
-    font-size: 1.5em;
-}
-
-.icons>a>i:hover {
-    color: #9adcfd;
-}
-
-/* Pop up */
-.popup {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 999;
-
-    display: none;
-
     align-items: center;
     justify-content: center;
+
+    font-family: "Cabin", sans-serif;
+    font-size: var(--title-size);
+    color: var(--title-color);
 }
 
-.popup.show {
-    display: flex;
-}
-
-.popup-bg {
-    background-color: #0087c8;
-    border-radius: 20px;
-    padding: 2em;
-
+.habits {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    align-content: center;
 }
 
-.popup-top {
+.habits>.habit {
+    background-color: var(--habit-bg);
+    border-radius: var(--habit-br);
+
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
+    width: 50%;
+
+    margin: 0.8em;
+} 
+
+.habits>.habit>h1 {
+    margin: 0.5em;
+
+    font-family: var(--habit-font);
+    font-size: var(--habit-size);
+    color: var(--habit-color);
 }
 
-.popup-top>h3 {
-    color: #d0efff;
-    font-family: 'Poppins', sans-serif;
+.habits>.habit>a>svg {
+    fill: var(--habit-color);
+    width: var(--habit-icon-size);
+    height: var(--habit-icon-size);
+
+    padding: 1em;
+
+    transition: fill 0.2s ease-in-out;
 }
 
-.popup-content>p {
-    color: #d0efff;
-    font-family: 'Poppins', sans-serif;
-}
-
-.popup-bottom {
-    display: flex;
-    justify-content: flex-end;
+.habits>.habit>a>svg:hover {
+    fill: var(--habit-hover);
 }
