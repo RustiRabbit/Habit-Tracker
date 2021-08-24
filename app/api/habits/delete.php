@@ -13,8 +13,8 @@
 
     // Check if SQL query worked
     if ($conn->query($delete_query) === TRUE) {
-        echo "Ok";
+        echo "ok";
         } else {
-        echo "Error" . $conn->error;
+        echo "error" . $conn->error;
         }
 ?>

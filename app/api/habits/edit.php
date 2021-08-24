@@ -12,12 +12,21 @@
 
     // Create SQL Connection
     $conn = $SQL_DB->CreateConnection();
-    $edit_query = "UPDATE `habits` SET `name` = '" . $habit_name . "', `description` = '" . $habit_desc . "', `frequency` = '" . $habit_freq . "' WHERE `user_id` = " . $user->id . " AND `id` = " . $habit_id;
+    $edit_query = "UPDATE `habits` SET `name` = '" . $habit_name . "', `description` = '" . $habit_desc . "', `frequency` = '" . $habit_freq . "' WHERE `user_id` = '" . $user->id . "' AND `id` = " . $habit_id;
 
-    // Check if SQL query worked
-    if ($conn->query($edit_query) === TRUE) {
-        echo "Ok";
+    $result = $conn->query($edit_query);
+
+    if ($result === TRUE) {
+        if ($conn->affected_rows == 0) {
+            echo "nothing changed";
+        } elseif ($conn->affected_rows == 1){
+            echo "ok";
         } else {
-        echo "Error" . $conn->error;
+            echo "error";
         }
+    } else {
+        echo "error";
+        echo $conn->error;
+    }
+
 ?>
