@@ -13,14 +13,6 @@ CREATE TABLE users (
     PRIMARY KEY(id)
 );
 
-CREATE TABLE tokens (
-    id int NOT NULL AUTO_INCREMENT,
-    token longtext,
-    user_id int,
-    PRIMARY KEY (id),
-    FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
 CREATE TABLE habits (
     id int NOT NULL AUTO_INCREMENT,
     name varchar(200),
@@ -37,6 +29,6 @@ CREATE TABLE habits_completed (
     habit_id int,
     time_completed bigint,
     PRIMARY KEY (id),
-    FOREIGN KEY (habit_id) REFERENCES habits(id)
+    FOREIGN KEY (habit_id) REFERENCES habits(id) ON DELETE CASCADE
 );
 

@@ -7,7 +7,7 @@
         $html = '
             <div class="habit">
                 <h1>' . $name . '</h1>
-                <a href="#">' . file_get_contents("../public/images/icons/edit.svg") . '</a>
+                <a href="#" onclick="EDIT.Show(\''. $id . '\', \'' . $name . '\', \'' . $desc . '\')">' . file_get_contents("../public/images/icons/edit.svg") . '</a>
             </div>        
         ';
         return $html;
@@ -54,55 +54,55 @@
             <?php echo $habits; ?>
         </div>
 
-        <form id="edit-form">
+        <form id="edit-form" onsubmit="return false">
             <div class="modal" id="edit">
                 <div class="modal-content">
                     <div class="top">
                         <h1>Editing</h1>
-                        <a><?php echo file_get_contents("../public/images/icons/close.svg") ?></a>
+                        <a onclick="EDIT.Hide()"><?php echo file_get_contents("../public/images/icons/close.svg") ?></a>
                     </div>
                     
                     <div class="input">
                         <h2>Name:</h2>
                         <div class="text">
-                            <input type="text" placeholder="What do you want to acomplish?">
+                            <input name="habit-name" type="text" placeholder="What do you want to acomplish?">
                         </div>
                     </div>
                     <div class="input">
                         <h2>Description:</h2>
                         <div class="text">
-                            <textarea rows="4" cols="40" placeholder="Describe your habit"></textarea>
+                            <textarea name="habit-desc" rows="4" cols="40" placeholder="Describe your habit"></textarea>
                         </div>
                     </div>
                     <div class="input">
                         <h2>Frequency:</h2>
                         <div class="days">
                             <div class="day">
-                                <input type="checkbox">
+                                <input name="mon" type="checkbox">
                                 <span>M</span>
                             </div>
                             <div class="day">
-                                <input type="checkbox">
+                                <input name="tue" type="checkbox">
                                 <span>T</span>
                             </div>
                             <div class="day">
-                                <input type="checkbox">
+                                <input name="wed" type="checkbox">
                                 <span>W</span>
                             </div>
                             <div class="day">
-                                <input type="checkbox">
+                                <input name="thu" type="checkbox">
                                 <span>T</span>
                             </div>
                             <div class="day">
-                                <input type="checkbox">
+                                <input name="fri" type="checkbox">
                                 <span>F</span>
                             </div>
                             <div class="day">
-                                <input type="checkbox">
+                                <input name="sat" type="checkbox">
                                 <span>S</span>
                             </div>
                             <div class="day">
-                                <input type="checkbox">
+                                <input name="sun" type="checkbox">
                                 <span>S</span>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
                 
                     <div class="bottom">
                         <button type="submit" id="delete">Delete</button>
-                        <button type="submit" id="save">Create</button>
+                        <button type="submit" id="save" onclick="EDIT.UPDATE()">Create</button>
                     </div>
                 </div>
             </div>
