@@ -1,37 +1,23 @@
 <?php 
-    // This file allows you to edit and update a habit
-
-    // THIS IS AN API PAGE - NO HTML
-
     // Include Authentication
     include("../../partials/auth_check.php");
     
     // Include Config
     include("../../../php/CONFIG.php");
 
-    /* 
-        Register GET Params
-        habit_name
-        habit_desc
-        habit_freq
-        habit_id
-    */
     $habit_name = $_GET["habit_name"];
+    $habit_desc = $_GET["habit_desc"];
+    $habit_freq = $_GET["habit_freq"];
+    $habit_id = $_GET["habit_id"];
 
     // Create SQL Connection
     $conn = $SQL_DB->CreateConnection();
-    /*
-        Create SQL Query and Save in variable
-        Reference -> https://www.w3schools.com/sql/sql_update.asp
+    $edit_query = "UPDATE `habits` SET `name` = '" . $habit_name . "', `description` = '" . $habit_desc . "', `frequency` = '" . $habit_freq . "' WHERE `user_id` = " . $user->id . " AND `id` = " . $habit_id;
 
-        Include WHERE condition for user_id
-    */
-
-    // Create Result variable that runs SQL Query eg: $conn->query(SQL)
-
-    // Check if the result variable equals true;
-    // https://www.w3schools.com/php/php_mysql_update.asp - Look at example (bottom 10ish lines)
-
-    // If result is true echo "ok"
-    // If result is else echo "error"
+    // Check if SQL query worked
+    if ($conn->query($edit_query) === TRUE) {
+        echo "Ok";
+        } else {
+        echo "Error" . $conn->error;
+        }
 ?>
