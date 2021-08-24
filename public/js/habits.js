@@ -1,5 +1,6 @@
 const URL = {
-    CREATE: "/app/api/habits/create.php?"
+    CREATE: "/app/api/habits/create.php?",
+    UPDATE: "/app/api/habits/update.php?"
 }
 
 const CREATE = {
@@ -40,6 +41,58 @@ const CREATE = {
                 response.text().then(function(data) {
                     if(data == "ok") {
                         location.reload();
+                    } else {
+                        alert("API Response returned error: " + data);
+                    }
+                })
+            }
+        )
+    }
+}
+
+const EDIT = {
+    ID: "edit",
+    SELECTED_ID: null,
+    Show: (id, name, desc) => {
+        EDIT.SELECTED_ID = id;
+        document.getElementById(EDIT.ID).classList = ["modal show"];
+        document.forms["edit-form"]["habit-name"].value = name;
+        document.forms["edit-form"]["habit-desc"].value = desc;
+    },
+    Hide: () => {
+        document.getElementById(EDIT.ID).classList = ["modal"];
+    },
+    UPDATE: () => {
+        const NAME = document.forms["edit-form"]["habit-name"].value;
+        const DESC = document.forms["edit-form"]["habit-desc"].value;
+
+        const FREQUENCY = {
+            0: document.forms["edit-form"]["mon"].checked,
+            1: document.forms["edit-form"]["tue"].checked,
+            2: document.forms["edit-form"]["wed"].checked,
+            3: document.forms["edit-form"]["thu"].checked, 
+            4: document.forms["edit-form"]["fri"].checked,
+            5: document.forms["edit-form"]["sat"].checked,
+            6: document.forms["edit-form"]["sun"].checked,
+        }
+
+        const Data = {
+            habit_name: NAME,
+            habit_desc: DESC,
+            habit_freq: "TEST",
+            habit_id: EDIT.SELECTED_ID,
+        }
+        
+        fetch(URL.UPDATE + new URLSearchParams(Data)).then(
+            function(response) {
+                if(response.status !== 200) {
+                    alert("Error attempting to access " + URL.UPDATE + new URLSearchParams(Data))
+                    return;
+                }
+                response.text().then(function(data) {
+                    if(data == "ok") {
+                        //location.reload();
+                        console.log(URL.UPDATE + new URLSearchParams(Data));
                     } else {
                         alert("API Response returned error: " + data);
                     }
