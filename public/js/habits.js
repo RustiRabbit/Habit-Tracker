@@ -1,6 +1,6 @@
 const URL = {
     CREATE: "/app/api/habits/create.php?",
-    UPDATE: "/app/api/habits/update.php?"
+    UPDATE: "/app/api/habits/edit.php?"
 }
 
 const CREATE = {
