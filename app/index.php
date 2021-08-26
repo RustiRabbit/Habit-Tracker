@@ -54,7 +54,24 @@
         while($row = $habits_result->fetch_assoc()) { // Loop through the returned rows
             $id = $row["id"];
             $name = $row["name"];
-            $habits .= generateHabitElement($row["id"], $row["name"], false); // Add Habit Element to the Page
+
+            /* 
+                Create variable start.
+                Create variable finish.
+
+                Create Habits_completed_query and set SQL to query habits_completed where id=$(VARIABLE id) AND time_completed BETWEEN $(VARAIBLE start) AND $(VARAIBLE finish)
+                Create habits_completed_result = $conn->query($habits_completed_query)
+
+                if($habits_completed_result->num_rows > 0) {
+                    // Means that the number of rows is greater than zero
+                    $habits .= generateHabitElement($row["id"], $row["name"], true);
+                } else {
+                    $habits .= generateHabitElement($row["id"], $row["name"], false);
+                }
+            */
+            $start = 0;
+            $end = 1;
+            
             
             $goals_sql = "SELECT * FROM habits_completed WHERE `habit_id` = " . $id; // Second SQL Request to get indiviual number of times completed
             $goals_result = $SQL_DB->CreateConnection()->query($goals_sql); // Query the Database

@@ -85,13 +85,15 @@ const EDIT = {
         
         fetch(URL.UPDATE + new URLSearchParams(Data)).then(
             function(response) {
+                console.log(response);
                 if(response.status !== 200) {
                     alert("Error attempting to access " + URL.UPDATE + new URLSearchParams(Data))
                     return;
                 }
                 response.text().then(function(data) {
-                    if(data == "ok") {
-                        //location.reload();
+                    console.log(data);
+                    if(data == "ok" || data == "nothing changed") {
+                        location.reload();
                         console.log(URL.UPDATE + new URLSearchParams(Data));
                     } else {
                         alert("API Response returned error: " + data);
