@@ -55,23 +55,8 @@
             $id = $row["id"];
             $name = $row["name"];
 
-            /* 
-                Create variable start.
-                Create variable finish.
-
-                Create Habits_completed_query and set SQL to query habits_completed where id=$(VARIABLE id) AND time_completed BETWEEN $(VARAIBLE start) AND $(VARAIBLE finish)
-                Create habits_completed_result = $conn->query($habits_completed_query)
-
-                if($habits_completed_result->num_rows > 0) {
-                    // Means that the number of rows is greater than zero
-                    $habits .= generateHabitElement($row["id"], $row["name"], true);
-                } else {
-                    $habits .= generateHabitElement($row["id"], $row["name"], false);
-                }
-            */
-
-            $start = 0;
-            $finish = 5;
+            $start = DateTime::createFromFormat('Y-m-d H:i:s', (new DateTime())->setTimestamp(time())->format('Y-m-d 00:00:00'))->getTimestamp();
+            $finish = DateTime::createFromFormat('Y-m-d H:i:s', (new DateTime())->setTimestamp(time())->format('Y-m-d 23:59:59'))->getTimestamp();
 
             $habits_completed_query = "SELECT * FROM `habits_completed` WHERE `habit_id` = 2 AND `time_completed` BETWEEN '" . $start . "' AND '" . $finish . "'";
             
