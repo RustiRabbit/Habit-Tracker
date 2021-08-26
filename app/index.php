@@ -69,9 +69,19 @@
                     $habits .= generateHabitElement($row["id"], $row["name"], false);
                 }
             */
+
             $start = 0;
-            $end = 1;
+            $finish = 5;
+
+            $habits_completed_query = "SELECT * FROM `habits_completed` WHERE `habit_id` = 2 AND `time_completed` BETWEEN '" . $start . "' AND '" . $finish . "'";
             
+            $habits_completed_result = $SQL_DB->CreateConnection()->query($habits_completed_query);
+
+            if ($habits_completed_result->num_rows > 0) {
+                $habits .= generateHabitElement($row["id"], $row ["name"], true);
+            } else {
+                $habits .= generateHabitElement($row["id"], $row ["name"], false);
+            }
             
             $goals_sql = "SELECT * FROM habits_completed WHERE `habit_id` = " . $id; // Second SQL Request to get indiviual number of times completed
             $goals_result = $SQL_DB->CreateConnection()->query($goals_sql); // Query the Database
