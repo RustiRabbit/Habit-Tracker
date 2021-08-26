@@ -109,8 +109,8 @@
                     </div>
                 
                     <div class="bottom">
-                        <button type="submit" id="delete">Delete</button>
-                        <button type="submit" id="save" onclick="EDIT.UPDATE()">Create</button>
+                        <button type="submit" id="delete" onclick="EDIT.DELETE()">Delete</button>
+                        <button type="submit" id="save" onclick="EDIT.UPDATE()">Update</button>
                     </div>
                 </div>
             </div>

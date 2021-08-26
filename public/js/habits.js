@@ -1,6 +1,7 @@
 const URL = {
     CREATE: "/app/api/habits/create.php?",
-    UPDATE: "/app/api/habits/edit.php?"
+    UPDATE: "/app/api/habits/edit.php?",
+    DELETE: "/app/api/habits/delete.php?"
 }
 
 const CREATE = {
@@ -101,5 +102,31 @@ const EDIT = {
                 })
             }
         )
+    },
+    DELETE: () => {
+        const Data = {
+            habit_id: EDIT.SELECTED_ID,
+        }
+
+        console.log(Data);
+
+        fetch(URL.DELETE + new URLSearchParams(Data)).then(
+            function(response) {
+                if(response.status !== 200) {
+                    alert("Error attempting to access " + URL.DELETE + new URLSearchParams(Data));
+                    return;
+                }
+
+                response.text().then(function(data) {
+                    if(data == "ok") {
+                        location.reload();
+                        console.log(URL.DELETE + new URLSearchParams(Data));
+                    } else {
+                        alert("API Response returned error: " + data);
+                    }
+                });
+            }
+        )
+
     }
 }
