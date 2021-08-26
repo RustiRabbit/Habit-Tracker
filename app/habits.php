@@ -65,7 +65,7 @@
                     <div class="input">
                         <h2>Name:</h2>
                         <div class="text">
-                            <input name="habit-name" type="text" placeholder="What do you want to acomplish?">
+                            <input name="habit-name" type="text" placeholder="What do you want to accomplish?">
                         </div>
                     </div>
                     <div class="input">
