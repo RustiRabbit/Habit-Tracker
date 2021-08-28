@@ -42,6 +42,8 @@
     --button-font: "Poppins", sans-serif;
 }
 
+/* Title */
+
 .title {
     display: flex;
     align-items: center;
@@ -66,6 +68,8 @@
     height: var(--add-size);
 }
 
+/* Create Habit Button */
+
 #empty {
     background-color: var(--title-color);
     font-family: "Cabin", sans-serif;
@@ -74,11 +78,29 @@
     padding: 0.2em 1.5em;
 
     transition: background-color 0.1s ease-in-out;
+
+    animation: pulse 3s ease-in-out infinite;
 }
 
 #empty:hover {
     background-color: #3189db;
 }
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 #4d97db1a;
+    }
+
+    50% {
+        box-shadow: 0 0 10px 14px #4d97db1a;
+    }
+
+    0% {
+        box-shadow: 0 0 0 0 #4d96db67;
+    }
+}
+
+/* Habit Display */
 
 .habits {
     display: flex;
