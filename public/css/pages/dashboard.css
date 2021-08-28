@@ -52,6 +52,15 @@
     flex-direction: column;
 }
 
+.content>.items>p {
+    text-align: center;
+    font-family: var(--title-font);
+}
+
+.content>.items>p>span {
+    color: var(--title-highlight);
+}
+
 /* Element Styling */
 .habit, .goal {
     display: flex;

@@ -76,8 +76,8 @@
             }
         }
     } else {
-        $habits = "<p>No habits</p>";
-        $goals = "<p>Looks like you just started!</p>";
+        $habits = "<p>Time to start something <span>new...</span></p>";
+        $goals = "<p>\"Life is empty without any <span>progress</span>\" - Me</p>";
     }
     $SQL_DB->CreateConnection()->close();
 ?>
