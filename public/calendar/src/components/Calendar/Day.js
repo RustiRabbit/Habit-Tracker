@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-import "../../scss/calendar.scss"
+import { Completed, Uncompleted } from './Completion';
 
 export default function Day(props) {
     // Manages display classes
@@ -30,22 +29,31 @@ export default function Day(props) {
 
     return (
         <td onClick={Show} className={DisplayClasses}>
-            <p>{props.day}</p>
-            <div className={DisplayState}>
-                <div className="content">
-                    <div className="header">
-                        <h1>{props.display}</h1>
-                    </div>
-                    <div className="habits">
-                        <h1>Goals:</h1>
-                        <ul>
-                            {Habits}
-                        </ul>
-                    </div>
-                    <button onClick={() => setDisplayState("cal-edit cal-hidden")}>Close</button>
+            <div className="bg">
+                <div className="top">
+                    <p>{props.day}</p>
+
                 </div>
-                
+                <div className="bottom">
+                    <Completed />
+                </div>
+
+                <div className={DisplayState}>
+                    <div className="content">
+                        <div className="header">
+                            <h1>{props.display}</h1>
+                        </div>
+                        <div className="habits">
+                            <h1>Goals:</h1>
+                            <ul>
+                                {Habits}
+                            </ul>
+                        </div>
+                        <button onClick={() => setDisplayState("cal-edit cal-hidden")}>Close</button>
+                    </div>
+                </div>
             </div>
+            
         </td>
     )
 }

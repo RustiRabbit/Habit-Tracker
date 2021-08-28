@@ -3,8 +3,7 @@ import { useSelector } from 'react-redux';
 import { selectCalendar } from '../../logic/calendarSlice';
 import Day from './Day';
 
-import "../../scss/calendar.scss";
-
+import "../../scss/main.scss";
 
 export default function Calender() {
     const Data = useSelector(selectCalendar);

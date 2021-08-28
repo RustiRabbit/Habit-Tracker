@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@600&display=swap');
+
+$title-color: #4D97DB;
+$title-size: 3em;
+$icon-size: 32px;
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .left {
+        display: flex;
+        flex-direction: row;
+
+        svg {
+            fill: $title-color;
+            width: $icon-size;
+            height: $icon-size;
+        }
+    }
+
+    .center {
+        h1 {
+            color: $title-color;
+            font-family: 'Cabin', sans-serif;
+            font-size: $title-size; 
+            user-select: none;
+        }
+    }
+
+}
