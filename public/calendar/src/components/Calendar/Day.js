@@ -17,7 +17,7 @@ export default function Day(props) {
 
     return (
        <td>
-           <div>
+           <div className="day">
                 <p>{props.day}</p>
                 <div className="status">
                     {Element}
