@@ -1,14 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCalendar, selectCurrent, updatePosition } from '../logic/calendarSlice';
+import { selectCalendar, selectCurrent, generateCalendar } from '../logic/calendarSlice';
 
 import HabitSelect  from './HabitSelect';
 
 import { format } from "date-fns";
-
-import ArrowBack from "../logos/arrow_back.svg";
-import TodayLogo from "../logos/today.svg";
-import ArrowForward from "../logos/arrow_forward.svg";
 
 import "../scss/navigation.scss";
 
@@ -19,15 +15,15 @@ export default function Navigation() {
     const Display = format(new Date(Current.year, Current.month), "MMMM, yyyy")
 
     const Decrement = () => {
-        Dispatch(updatePosition(new Date(Current.year, Current.month - 1).toJSON()))
+        Dispatch(generateCalendar(new Date(Current.year, Current.month - 1).toJSON()))
     }
 
     const Increment = () => {
-        Dispatch(updatePosition(new Date(Current.year, Current.month + 1).toJSON()))
+        Dispatch(generateCalendar(new Date(Current.year, Current.month + 1).toJSON()))
     }
 
     const Today = () => {
-        Dispatch(updatePosition(new Date().toJSON()));
+        Dispatch(generateCalendar(new Date().toJSON()));
     }
 
     return (

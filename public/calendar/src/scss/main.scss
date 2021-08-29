@@ -2,98 +2,65 @@ $day-size: 5em;
 $day-bg: #C4C4C4;
 $day-br: 5px;
 
+$day-bg: #C4C4C4;
+$day-br: 5px;
 $day-text: #4D97DB;
 $day-font: 'Cabin', sans-serif;
-$day-font-size: 1.3em;
+$day-font-size: 1.4em;
 
 $status-size: 40px;
 $status-color: #4D97DB;
+
+$element-size: 6em;
+
 
 .cal-title {
     color: $day-text;
     font-family: $day-font;
 }
 
-.cal-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+th {
+    min-width: 0;
+    padding: 0;
 
-    .bg {
+    width: $element-size;
+}
+
+td {
+    div {
         background-color: $day-bg;
-        width: $day-size;
-        height: $day-size;
         border-radius: $day-br;
-        box-shadow: 2px 1px 8px rgba(0, 0, 0, 0.25);
 
-        margin: 0.4em;
+        width: $element-size;
+        height: $element-size;
+        box-sizing: border-box; 
 
-        transition: box-shadow 0.1s ease-in-out;
+        overflow: hidden;
 
         display: flex;
         flex-direction: column;
-        justify-content: center;
 
-        &:hover {
-            box-shadow: 4px 2px 16px rgba(0, 0, 0, 0.25);
-        }
-    }
+        p {
+            color: $day-text;
+            font-family: $day-font;
+            font-size: $day-font-size;
+            margin: 0;
 
-    .cal-day {
-        .top {
-            display: flex;
-            justify-content: flex-start;
-        
-            p {
-                color: $day-text;
-                font-family: $day-font;
-                font-size: $day-font-size;
-                margin: 0;
-
-                padding: 0.3em;
-
-                user-select: none;
-            }
+            padding: 0.5em;
         }
 
-        .bottom {
+        .status {
             display: flex;
             justify-content: flex-end;
-
+            align-items: flex-end;
+            
             svg {
                 width: $status-size;
                 height: $status-size;
-                fill: $status-color;
             }
         }
 
-
-        .cal-edit {
-            &.cal-hidden {
-                display: none;
-            }
-
-            &.cal-show {
-                position: absolute;
-                
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                
-                left: 0;
-                top: 0;
-
-                width: 100%;
-                height: 100%;
-
-                background-color: rgba(0, 0, 0, 0.25);
-
-                .content {
-                    background-color: blue;
-                }
-
-            }
-        }
+        
     }
 
 }

@@ -1,7 +1,7 @@
 <?php 
     // Check Authentication
-    include("../../partials/auth_check.php");
-    include("../../../php/CONFIG.php");
+    include("../../../partials/auth_check.php");
+    include("../../../../php/CONFIG.php");
 
     $habit_name = $_GET["habit_name"];
     $habit_desc = $_GET["habit_desc"];

@@ -32,7 +32,6 @@
     }
 ?>
 
-<!DOCTYPE>
 <html>
     <head>
         <title>Habit Tracker</title>

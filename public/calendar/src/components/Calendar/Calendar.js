@@ -12,11 +12,11 @@ export default function Calender() {
         const days = week.days.map((day) => {
             if(day.inMonth == false) {
                 return (
-                    <Day key={day.dateNumber} outside={true} display={day.display} day={day.dateNumber} habits={day.habits}/>
+                    <Day key={day.dateNumber} outside={true} display={day.display} day={day.dateNumber} habit={day.habits}/>
                 )
             }
             return (
-                <Day key={day.dateNumber} display={day.display} day={day.dateNumber} habits={day.habits}/>
+                <Day key={day.dateNumber} display={day.display} day={day.dateNumber} habit={day.habits}/>
             )
         })
 
@@ -28,23 +28,21 @@ export default function Calender() {
     })
 
     return (
-        <div className="cal-body">
-            <table>
-                <thead>
-                    <tr className="cal-title">
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
-                        <th>Saturday</th>
-                        <th>Sunday</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {Elements}
-                </tbody>
-            </table>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thurdsay</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                </tr>
+            </thead>
+            <tbody>
+                {Elements}
+            </tbody>
+        </table>
     );
 }
