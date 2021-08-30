@@ -13,6 +13,14 @@ $status-color: #4D97DB;
 
 $element-size: 6em;
 
+$popup-bg: #FFFFFF;
+$popup-br: 5px;
+$popup-title-font: "Poppins", sans-serif;
+$popup-title-font-size: 2em;
+$popup-close-size: 40px;
+
+$popup-highlight-text-color: #4D97DB;
+
 
 .cal-title {
     color: $day-text;
@@ -70,6 +78,74 @@ td {
             svg {
                 width: $status-size;
                 height: $status-size;
+            }
+        }
+
+        .popup {
+            &.show {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+    
+                display: flex;
+                align-items: center;
+                justify-content: center;
+    
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+
+            &.hide {
+                display: none;
+            }
+        
+            .popup-bg {
+                background-color: $popup-bg;
+                border-radius: $popup-br;
+                
+                width: 30%;
+                height: 50%;
+
+                .top {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    position: relative;
+
+                    h1 {
+                        text-transform: uppercase;
+                        
+                        font-family: $popup-title-font;
+                        font-size: $popup-title-font-size;
+
+                        margin: 0;
+                    }
+
+                    div {
+                        position: absolute;
+                        right: 0;
+
+                        padding: 2em;
+
+                        svg {
+                            width: $popup-close-size;
+                            height: $popup-close-size;
+
+                            fill: $popup-highlight-text-color;
+                        }
+                    }
+                }
+
+                h3 {
+                    text-align: center;
+                    color: $popup-highlight-text-color;
+                    font-family: $popup-title-font;
+
+                    margin: 0;
+                }
             }
         }
 

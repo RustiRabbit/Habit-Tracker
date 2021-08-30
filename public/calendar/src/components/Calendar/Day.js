@@ -1,28 +1,57 @@
-import React, { useState } from 'react';
+import format from 'date-fns/format';
+import fromUnixTime from 'date-fns/fromUnixTime';
+import React, { useEffect, useState } from 'react';
 import { OVERALL } from '../../logic/types';
-import { Completed, Empty, Uncompleted, Error } from './Completion';
+import Close from './Close';
+import { Completed, Empty, Uncompleted, Error} from './Completion';
 
 export default function Day(props) {
-    let Element;
+    const [display, setDisplay] = useState("popup hide");
+    
+    let HabitStatusElement;
 
-    if(props.habit.overall == OVERALL.Completed) {
-        Element = <Completed />;
-    } else if (props.habit.overall == OVERALL.Uncompleted) {
-        Element = <Uncompleted />;
-    } else if (props.habit.overall == OVERALL.Empty) {
-        Element = <Empty />;
+    if(props.habits.overall == OVERALL.Uncompleted) {
+        HabitStatusElement = <Uncompleted />;
+    } else if(props.habits.overall == OVERALL.Completed) {
+        HabitStatusElement = <Completed />;
+    } else if(props.habits.overall == OVERALL.Empty) {
+        HabitStatusElement = <Empty />;
+    } else if(props.habits.overall == OVERALL.Error) {
+        HabitStatusElement = <Error />;
     } else {
-        Element = <Error />;
+        HabitStatusElement = <Error />;
     }
 
+    const Show = () => {
+        if(display == "popup hide") {
+            setDisplay("popup show");
+        }
+    }
+
+    const Display = {
+        Short: format(fromUnixTime(props.day), "EEEE"),
+        Long: format(fromUnixTime(props.day), "do") + " of " + format(fromUnixTime(props.day), "MMMM") + ", " + format(fromUnixTime(props.day), "yyyy")
+    };
+
     return (
-       <td>
-           <div className="day">
-                <p>{props.day}</p>
+        <td onClick={Show}>
+            <div className="day">
+                <p>{props.dateNumber}</p>
                 <div className="status">
-                    {Element}
+                    {HabitStatusElement}
+                </div>
+                <div className={display}>
+                    <div className="popup-bg">
+                        <div className="top">
+                            <h1>{Display.Short}</h1>
+                            <h3>{Display.Long}</h3>
+                            <div onClick={() => setDisplay("popup hide")}>
+                                <Close />
+                            </div>
+                        </div>
+                    </div>  
                 </div>
             </div>
         </td>
-   )
+    );
 }

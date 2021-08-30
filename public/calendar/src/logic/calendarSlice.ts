@@ -23,7 +23,7 @@ interface Week {
 interface Day {
     dateNumber: number,
     inMonth: boolean,
-    display: string,
+    day: number,
     habits: HabitStatus
 }
 
@@ -167,7 +167,7 @@ export const generateCalendar = createAsyncThunk(
 
                 let day: Day = {
                     dateNumber: parseInt(format(DayDate, "dd")),
-                    display: format(DayDate, "EEEE") + ", " + format(DayDate, "do") + " of " + format(DayDate, "MMM") + ", " + format(DayDate, "yyyy"),
+                    day: getUnixTime(DayDate),
                     inMonth: inMonth,
                     habits: Completed
                 } 
