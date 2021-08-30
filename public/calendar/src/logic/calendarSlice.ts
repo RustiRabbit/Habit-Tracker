@@ -109,7 +109,6 @@ export const generateCalendar = createAsyncThunk(
         // Fill out habits variable
         const HABITS = APIData.data;
         Object.keys(HABITS).forEach((key: string) => {
-            console.log(HABITS[key]);
             var habit: Habit = {
                 id: HABITS[key].id,
                 name: HABITS[key].name,
@@ -148,7 +147,6 @@ export const generateCalendar = createAsyncThunk(
                         overall = OVERALL.Empty;
                     } else if (data.frequency[parseInt(format(DayDate, "i")) - 1] == true) {
                         overall = OVERALL.Uncompleted;
-
                         
                         // Check if the habit has been completed
                         Object.keys(data.completed).forEach((key: any) => {
