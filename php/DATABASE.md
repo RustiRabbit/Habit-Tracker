@@ -13,12 +13,14 @@ CREATE TABLE users (
     PRIMARY KEY(id)
 );
 
+ALTER TABLE `users` ADD UNIQUE(`email`);
+
 CREATE TABLE habits (
     id int NOT NULL AUTO_INCREMENT,
     name varchar(200),
     description longtext,
     frequency longtext,
-    goal int,
+    start_date int,
     user_id int,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)
