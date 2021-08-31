@@ -21,6 +21,8 @@ $popup-close-size: 40px;
 
 $popup-highlight-text-color: #4D97DB;
 
+$popup-icon-size: 40px;
+
 
 .cal-title {
     color: $day-text;
@@ -124,6 +126,14 @@ td {
                         margin: 0;
                     }
 
+                    h3 {
+                        text-align: center;
+                        color: $popup-highlight-text-color;
+                        font-family: $popup-title-font;
+    
+                        margin: 0;
+                    }
+
                     div {
                         position: absolute;
                         right: 0;
@@ -139,13 +149,33 @@ td {
                     }
                 }
 
-                h3 {
-                    text-align: center;
-                    color: $popup-highlight-text-color;
-                    font-family: $popup-title-font;
+                .habits {
+                    display: flex;
+                    flex-direction: column;
 
-                    margin: 0;
+                    div {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        
+                        padding: 1em;
+
+                        svg {
+                            width: $popup-icon-size;
+                            height: $popup-icon-size;
+
+                            fill: $popup-highlight-text-color;
+                        }
+
+                        h2  {
+                            font-family: $popup-title-font;
+
+                            padding: 0.5em;
+                        }
+                    }
                 }
+
+               
             }
         }
 

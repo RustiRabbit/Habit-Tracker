@@ -36,7 +36,8 @@ interface HabitStatus {
 interface HabitProgress {
     id: number, 
     name: string, 
-    status: string
+    status: OVERALL,
+    time: number
 }
 
 interface CalendarState {
@@ -139,6 +140,7 @@ export const generateCalendar = createAsyncThunk(
                 }
 
                 let overall = OVERALL.Error;
+                let progress:Array<HabitProgress> = [];
 
                 // Loop through the habits to work out the completion status
                 for(var x = 0; x < habits.length; x++) {
@@ -156,13 +158,19 @@ export const generateCalendar = createAsyncThunk(
                                 overall = OVERALL.Completed;
                             }
                         });
+
+                        if(overall != OVERALL.Uncompleted) {
+                            progress.push({id: habits[x].id, name: habits[x].name, status: OVERALL.Completed, time: 0})
+                        } else {
+                            progress.push({id: habits[x].id, name: habits[x].name, status: OVERALL.Uncompleted, time: 0})
+                        }
                     }
                 }
 
                 // uncompleted or completed
                 let Completed: HabitStatus = {
                     overall: overall,
-                    progress: [],
+                    progress: progress,
                 };
 
                 let day: Day = {

@@ -33,6 +33,8 @@ export default function Day(props) {
         Long: format(fromUnixTime(props.day), "do") + " of " + format(fromUnixTime(props.day), "MMMM") + ", " + format(fromUnixTime(props.day), "yyyy")
     };
 
+    let Habits = props.habits.progress.map((habit) => <HabitDisplay key={habit.id} habit={habit} />)
+
     return (
         <td onClick={Show}>
             <div className="day">
@@ -49,9 +51,29 @@ export default function Day(props) {
                                 <Close />
                             </div>
                         </div>
+                        <div className="habits">
+                           {Habits}
+                        </div>
                     </div>  
                 </div>
             </div>
         </td>
     );
+}
+
+function HabitDisplay(props) {
+    var Status;
+
+    if(props.habit.status == OVERALL.Completed) {
+        Status = <Completed />;
+    } else if(props.habit.status == OVERALL.Uncompleted) {
+        Status = <Uncompleted />;
+    }
+
+    return (
+        <div>
+            {Status}
+            <h2>{props.habit.name}</h2>
+        </div>
+    )
 }
