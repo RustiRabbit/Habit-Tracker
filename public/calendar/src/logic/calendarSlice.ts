@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { RootState } from './store';
 
-import { getISOWeek, getMonth, getYear, startOfWeek, addWeeks, format, addDays, endOfWeek, isMonday, differenceInHours, differenceInWeeks, getUnixTime, fromUnixTime } from "date-fns";
+import { getISOWeek, getMonth, getYear, startOfWeek, addWeeks, format, addDays, endOfWeek, isMonday, differenceInHours, differenceInWeeks, getUnixTime, fromUnixTime, isBefore } from "date-fns";
 import Day from '../components/Calendar/Day';
 import axios from 'axios';
 import differenceInDays from 'date-fns/differenceInDays';
@@ -54,7 +54,8 @@ interface Habit {
     id: number,
     name: string,
     frequency: Array<boolean>,
-    completed: Array<HabitCompleted>
+    completed: Array<HabitCompleted>,
+    start: number
 }
 
 interface HabitCompleted {
@@ -114,7 +115,8 @@ export const generateCalendar = createAsyncThunk(
                 id: HABITS[key].id,
                 name: HABITS[key].name,
                 frequency: HABITS[key].frequency,
-                completed: HABITS[key].completed
+                completed: HABITS[key].completed,
+                start: HABITS[key].start_date,
             };
             habits.push(habit);
         })
@@ -145,6 +147,8 @@ export const generateCalendar = createAsyncThunk(
                 // Loop through the habits to work out the completion status
                 for(var x = 0; x < habits.length; x++) {
                     const data = habits[x];
+
+                    // Check if the current habit is due on the current day
                     if(data.frequency[parseInt(format(DayDate, "i")) - 1] == false) {
                         overall = OVERALL.Empty;
                     } else if (data.frequency[parseInt(format(DayDate, "i")) - 1] == true) {
@@ -160,9 +164,9 @@ export const generateCalendar = createAsyncThunk(
                         });
 
                         if(overall != OVERALL.Uncompleted) {
-                            progress.push({id: habits[x].id, name: habits[x].name, status: OVERALL.Completed, time: 0})
+                            progress.push({id: data.id, name: data.name, status: OVERALL.Completed, time: 0})
                         } else {
-                            progress.push({id: habits[x].id, name: habits[x].name, status: OVERALL.Uncompleted, time: 0})
+                            progress.push({id: data.id, name: data.name, status: OVERALL.Uncompleted, time: 0})
                         }
                     }
                 }

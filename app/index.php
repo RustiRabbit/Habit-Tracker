@@ -58,7 +58,7 @@
             $start = DateTime::createFromFormat('Y-m-d H:i:s', (new DateTime())->setTimestamp(time())->format('Y-m-d 00:00:00'))->getTimestamp();
             $finish = DateTime::createFromFormat('Y-m-d H:i:s', (new DateTime())->setTimestamp(time())->format('Y-m-d 23:59:59'))->getTimestamp();
 
-            $habits_completed_query = "SELECT * FROM `habits_completed` WHERE `habit_id` = 2 AND `time_completed` BETWEEN '" . $start . "' AND '" . $finish . "'";
+            $habits_completed_query = "SELECT * FROM `habits_completed` WHERE `habit_id` = " . $id . " AND `time_completed` BETWEEN '" . $start . "' AND '" . $finish . "'";
             
             $habits_completed_result = $SQL_DB->CreateConnection()->query($habits_completed_query);
 
