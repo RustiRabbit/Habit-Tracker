@@ -38,7 +38,6 @@ interface HabitProgress {
     id: number, 
     name: string, 
     status: OVERALL,
-    time: number
 }
 
 interface CalendarState {
@@ -120,8 +119,7 @@ export const generateCalendar = createAsyncThunk(
                 start: HABITS[key].start_date,
             };
             habits.push(habit);
-        })
-
+        });
 
         for(var i = 0; i < differenceInWeeks(LastDay, FirstDay) + 1; i++) {
             // Get the monday of the current week based on the number of weeks into the month
@@ -157,7 +155,7 @@ export const generateCalendar = createAsyncThunk(
                     console.group();
                     const habit = habits[x]; // Save current habit for future reference
 
-                    console.log("Habit Start: " + format(fromUnixTime(habit.start), "Pp") + "\nCurrent Date: " + format(DayDate, "Pp"));
+                    console.log("Habit Name: " + habit.name + "\nHabit Start: " + format(fromUnixTime(habit.start), "Pp") + "\nCurrent Date: " + format(DayDate, "Pp"));
 
                     // Check if the habit start date is after the current date
                     if(isAfter(DayDate, fromUnixTime(habit.start))) {
@@ -185,11 +183,14 @@ export const generateCalendar = createAsyncThunk(
                                     if(!completed) {
                                         console.log("[Output] Habit is due today - but not completed");
                                         overall_progress.uncompleted++;
+
+                                        progress.push({id: habit.id, name: habit.name, status: OVERALL.Uncompleted})
                                     } else {
                                         overall_progress.completed++;
                                         console.log("[Output] Habit is due today - completed");
-                                    }
 
+                                        progress.push({id: habit.id, name: habit.name, status: OVERALL.Completed})
+                                    }
                                 } else { // Means that the habit is not due today
                                     overall_progress.empty++;
                                     console.log("[Output] Habit is not due today");
