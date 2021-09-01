@@ -33,4 +33,3 @@ CREATE TABLE habits_completed (
     PRIMARY KEY (id),
     FOREIGN KEY (habit_id) REFERENCES habits(id) ON DELETE CASCADE
 );
-
