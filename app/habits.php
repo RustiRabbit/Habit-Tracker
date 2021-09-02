@@ -3,10 +3,48 @@
     include("partials/auth_check.php");
     include("../php/CONFIG.php");
 
-    function createHabit($id, $name, $desc) {
+    function createHabit($id, $name, $desc, $frequency) {
+        $days = "";
+        
+        foreach(json_decode($frequency) as $key => $value) {
+            echo $key;
+            $display = "";
+            switch($key) {
+                case 0:
+                    $display = "M";
+                    break;
+                case 1:
+                    $display = "T";
+                    break;
+                case 2:
+                    $display = "W";
+                    break;
+                case 3:
+                    $display = "T";
+                    break;
+                case 4:
+                    $display = "F";
+                    break;
+                case 5:
+                    $display = "S";
+                    break;
+                case 6:
+                    $display = "S";
+                    break;
+            }
+
+            echo $display;
+
+            if($value == 1) {
+                $days .= "<span class='selected'>" . $display . "</span>";
+            } else {
+                $days .= "<span class=''>" . $display . "</span>";
+            }
+        }
         $html = '
             <div class="habit">
                 <h1>' . $name . '</h1>
+                <div id="days">' . $days . '</div>
                 <a href="#" onclick="EDIT.Show(\''. $id . '\', \'' . $name . '\', \'' . $desc . '\')">' . file_get_contents("../public/images/icons/edit.svg") . '</a>
             </div>        
         ';
@@ -23,10 +61,7 @@
 
     if ($habits_result->num_rows > 0) { // Check that habits actually exist
         while($row = $habits_result->fetch_assoc()) { // Loop through the returned rows
-            $id = $row["id"];
-            $name = $row["name"];
-            $desc = $row["description"];
-            $habits .= createHabit($row["id"], $row["name"], $row["description"]); // Add Habit Element to the Page
+            $habits .= createHabit($row["id"], $row["name"], $row["description"], $row["frequency"]); // Add Habit Element to the Page
         }
     } else {
         $habits = '<p id="empty" onclick="CREATE.Show()">Create a habit</p>';
