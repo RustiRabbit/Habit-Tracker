@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { OVERALL } from '../../logic/types';
 import Close from './Close';
 import { Completed, Empty, Uncompleted, Error} from './Completion';
+import HabitDisplay from './HabitDisplay';
 
 export default function Day(props) {
     const [display, setDisplay] = useState("popup hide");
@@ -33,7 +34,6 @@ export default function Day(props) {
         Long: format(fromUnixTime(props.day), "do") + " of " + format(fromUnixTime(props.day), "MMMM") + ", " + format(fromUnixTime(props.day), "yyyy")
     };
 
-    let Habits = props.habits.progress.map((habit) => <HabitDisplay key={habit.id} habit={habit} />)
 
     return (
         <td onClick={Show}>
@@ -51,29 +51,11 @@ export default function Day(props) {
                                 <Close />
                             </div>
                         </div>
-                        <div className="habits">
-                           {Habits}
-                        </div>
+                        <HabitDisplay progress={props.habits.progress} />
+
                     </div>  
                 </div>
             </div>
         </td>
     );
-}
-
-function HabitDisplay(props) {
-    var Status;
-
-    if(props.habit.status == OVERALL.Completed) {
-        Status = <Completed />;
-    } else if(props.habit.status == OVERALL.Uncompleted) {
-        Status = <Uncompleted />;
-    }
-
-    return (
-        <div>
-            {Status}
-            <h2>{props.habit.name}</h2>
-        </div>
-    )
 }
