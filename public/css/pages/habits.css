@@ -115,11 +115,13 @@
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 
     width: 50%;
 
     margin: 0.8em;
+
+    position: relative;
 } 
 
 .habits>.habit>h1 {
@@ -128,6 +130,26 @@
     font-family: var(--habit-font);
     font-size: var(--habit-size);
     color: var(--habit-color);
+}
+
+.habits>.habit>#days {
+    font-family: var(--habit-font);
+}
+
+.habits>.habit>#days>span {
+    padding: 0.1em;
+}
+
+.habits>.habit>#days>.selected {
+    color: var(--habit-color);
+    font-weight: bold;
+
+}
+
+.habits>.habit>a {
+    position: absolute;
+    right: 0;
+    padding-right: 1em;
 }
 
 .habits>.habit>a>svg {

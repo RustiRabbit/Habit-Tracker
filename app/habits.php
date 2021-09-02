@@ -7,7 +7,6 @@
         $days = "";
         
         foreach(json_decode($frequency) as $key => $value) {
-            echo $key;
             $display = "";
             switch($key) {
                 case 0:
@@ -32,8 +31,6 @@
                     $display = "S";
                     break;
             }
-
-            echo $display;
 
             if($value == 1) {
                 $days .= "<span class='selected'>" . $display . "</span>";
