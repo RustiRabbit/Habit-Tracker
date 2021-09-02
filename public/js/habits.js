@@ -1,7 +1,7 @@
 const URL = {
-    CREATE: "/app/api/habits/create.php?",
-    UPDATE: "/app/api/habits/edit.php?",
-    DELETE: "/app/api/habits/delete.php?"
+    CREATE: "/app/api/habits/crud/create.php?",
+    UPDATE: "/app/api/habits/crud/update.php?",
+    DELETE: "/app/api/habits/crud/delete.php?"
 }
 
 const CREATE = {

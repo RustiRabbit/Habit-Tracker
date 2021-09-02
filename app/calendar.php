@@ -18,7 +18,6 @@
     </head>
     <body>
         <?php include("partials/navbar.php") ?>
-        <h1>Calendar Page</h1>
         <noscript>Javascript is required for this page</noscript>
         <div id="calendar">
 
