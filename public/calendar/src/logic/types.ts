@@ -3,4 +3,5 @@ export enum OVERALL {
     Uncompleted = '1',
     Empty = '2',
     Error = '3',
+    CompletedWrongDay = '4',
 }

@@ -194,6 +194,24 @@ export const generateCalendar = createAsyncThunk(
                                 } else { // Means that the habit is not due today
                                     overall_progress.empty++;
                                     console.log("[Output] Habit is not due today");
+
+                                    // If a habit has been completed, show it
+                                    for(const habit_key in habit.completed) {
+                                        const habit_completed = habit.completed[habit_key];
+                                        
+                                        let completed = false;
+
+                                        // Check that the habit was completed on the day
+                                        if(differenceInHours(fromUnixTime(parseInt(habit_completed.time_completed)), DayDate) > 0 && differenceInHours(fromUnixTime(parseInt(habit_completed.time_completed)), DayDate) < 24) {
+                                            console.log("[Output] But, we found a habit completed, on this day, we should show");
+                                            completed = true;
+                                        }
+
+                                        if(completed == true) {
+                                            progress.push({id: habit.id, name: habit.name, status: OVERALL.CompletedWrongDay})
+                                        }
+
+                                    }
                                 }
                             } else { 
                                 overall_progress.error++;

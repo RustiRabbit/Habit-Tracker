@@ -10,10 +10,10 @@ export default function HabitDisplay(props) {
         let Uncompleted = [];
 
         for(var i = 0; i < data.length; i++) {
-            if(data[i].status == OVERALL.Completed) {
-                Completed.push(<Habit data={data[i]} />);
+            if(data[i].status == OVERALL.Completed || data[i].status == OVERALL.CompletedWrongDay) {
+                Completed.push(<Habit key={i} data={data[i]} />);
             } else if(data[i].status == OVERALL.Uncompleted) {
-                Uncompleted.push(<Habit data={data[i]} />);
+                Uncompleted.push(<Habit key={i} data={data[i]} />);
             }
         }
 
@@ -46,6 +46,7 @@ function Habit(props) {
     const data = props.data;
 
     let Display = <Error />;
+    let WrongDay;
 
     if(data.status == OVERALL.Completed) {
         Display = <Completed />;
@@ -53,12 +54,16 @@ function Habit(props) {
         Display = <Uncompleted />;
     } else if(data.status == OVERALL.Empty) {
         Display = <Empty />;
+    } else if(data.status == OVERALL.CompletedWrongDay) {
+        Display = <Completed />;
+        WrongDay = <p id="wrong">Habit Not Due Today</p>;
     }
     
     return (
         <div>
             {Display}
             <p>{data.name}</p>
+            {WrongDay}
         </div>
     );
 }
