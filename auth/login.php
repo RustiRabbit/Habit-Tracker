@@ -63,7 +63,7 @@
                 <form method="post">
                     <div class="text">
                         <p>Email</p>
-                        <input type="text" name="email">
+                        <input type="email" name="email">
                     </div>
 
                     <div class="text">
