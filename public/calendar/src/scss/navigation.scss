@@ -4,30 +4,73 @@ $title-color: #4D97DB;
 $title-size: 3em;
 $icon-size: 32px;
 
+$tooltip-bg: #5f6368;
+$tooltip-font: "Cabin", sans-serif;
+
 .nav {
     display: flex;
-    flex-direction: row;
     align-items: center;
+    flex-direction: column;
     justify-content: space-between;
 
-    .left {
-        display: flex;
-        flex-direction: row;
+    padding: 1em;
 
-        svg {
-            fill: $title-color;
-            width: $icon-size;
-            height: $icon-size;
-        }
-    }
-
-    .center {
+    .top {
         h1 {
             color: $title-color;
             font-family: 'Cabin', sans-serif;
             font-size: $title-size; 
             user-select: none;
+
+            margin: 0;
         }
     }
 
+    .bottom {
+        display: flex;
+        flex-direction: row;
+
+        div {
+            padding: 0.5em;
+            margin: 0.1em;
+
+            transition: background-color 0.2s ease-in-out;
+            border-radius: 50%;
+
+            svg {
+                fill: $title-color;
+                width: $icon-size;
+                height: $icon-size;
+            }
+
+            /* Tooltip */
+            position: relative;
+
+            span {
+                display: none;
+                position: absolute;
+                text-align: center;
+                left: 50%;
+                top: 120%;
+                width: 8em;
+                transform: translateX(-50%);
+                background-color: $tooltip-bg;
+                color: white;
+                font-weight: bold;
+                font-family: $tooltip-font;
+                border-radius: 3px;
+                user-select: none;
+            }
+
+            &:hover {
+                span  {
+                    display: block;
+                }
+            }
+        }
+
+        div:hover {
+            background-color:#cfcdcd;
+        }
+    }
 }
