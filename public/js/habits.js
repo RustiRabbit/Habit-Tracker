@@ -1,7 +1,8 @@
 const URL = {
     CREATE: "/app/api/habits/crud/create.php?",
     UPDATE: "/app/api/habits/crud/update.php?",
-    DELETE: "/app/api/habits/crud/delete.php?"
+    DELETE: "/app/api/habits/crud/delete.php?",
+    READ: "/app/api/habits/crud/read.php?"
 }
 
 const CREATE = {
@@ -59,6 +60,29 @@ const EDIT = {
         document.getElementById(EDIT.ID).classList = ["modal show"];
         document.forms["edit-form"]["habit-name"].value = name;
         document.forms["edit-form"]["habit-desc"].value = desc;
+        
+        // Get Habits From API Endpoint
+        fetch(URL.READ + new URLSearchParams({id: id})).then(
+            function(response) {
+                if(response.status !== 200) {
+                    alert("Error attempting to access: " + URL.READ + new URLSearchParams({id: id}));
+                    return;
+                }
+                response.json().then(function(data) {
+                    const freq = data[id].frequency;
+                    
+                    document.forms["edit-form"]["mon"].checked = freq[0];
+                    document.forms["edit-form"]["tue"].checked = freq[1];
+                    document.forms["edit-form"]["wed"].checked = freq[2];
+                    document.forms["edit-form"]["thu"].checked = freq[3];
+                    document.forms["edit-form"]["fri"].checked = freq[4];
+                    document.forms["edit-form"]["sat"].checked = freq[5];
+                    document.forms["edit-form"]["sun"].checked = freq[6];
+
+
+                });
+            }
+        )
     },
     Hide: () => {
         document.getElementById(EDIT.ID).classList = ["modal"];
@@ -80,7 +104,7 @@ const EDIT = {
         const Data = {
             habit_name: NAME,
             habit_desc: DESC,
-            habit_freq: "TEST",
+            habit_freq: JSON.stringify(FREQUENCY),
             habit_id: EDIT.SELECTED_ID,
         }
         
