@@ -25,27 +25,37 @@ export default function Calender() {
                 {days}
             </tr>   
         )
-    })
+    });
+
+    let JSONError;
+
+    if(Data.jsonError == true) {
+        JSONError = <p id="jsonMessage">A JSON Parsing Error occured. Go to the habits page and update your habit to rectify the error</p>;
+    }
 
     return (
-        <div className="table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thurdsay</th>
-                        <th>Friday</th>
-                        <th>Saturday</th>
-                        <th>Sunday</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {Elements}
-                </tbody>
-            </table>
+        <div>
+            {JSONError}
+            <div className="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thurdsay</th>
+                            <th>Friday</th>
+                            <th>Saturday</th>
+                            <th>Sunday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {Elements}
+                    </tbody>
+                </table>
+            </div>
         </div>
+        
         
     );
 }

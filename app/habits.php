@@ -5,39 +5,47 @@
 
     function createHabit($id, $name, $desc, $frequency) {
         $days = "";
-        
-        foreach(json_decode($frequency) as $key => $value) {
-            $display = "";
-            switch($key) {
-                case 0:
-                    $display = "M";
-                    break;
-                case 1:
-                    $display = "T";
-                    break;
-                case 2:
-                    $display = "W";
-                    break;
-                case 3:
-                    $display = "T";
-                    break;
-                case 4:
-                    $display = "F";
-                    break;
-                case 5:
-                    $display = "S";
-                    break;
-                case 6:
-                    $display = "S";
-                    break;
-            }
 
-            if($value == 1) {
-                $days .= "<span class='selected'>" . $display . "</span>";
-            } else {
-                $days .= "<span class=''>" . $display . "</span>";
+        $json = json_decode($frequency);
+
+        if(json_last_error() === 0) {
+            foreach($json as $key => $value) {
+                $display = "";
+                switch($key) {
+                    case 0:
+                        $display = "M";
+                        break;
+                    case 1:
+                        $display = "T";
+                        break;
+                    case 2:
+                        $display = "W";
+                        break;
+                    case 3:
+                        $display = "T";
+                        break;
+                    case 4:
+                        $display = "F";
+                        break;
+                    case 5:
+                        $display = "S";
+                        break;
+                    case 6:
+                        $display = "S";
+                        break;
+                }
+    
+                if($value == 1) {
+                    $days .= "<span class='selected'>" . $display . "</span>";
+                } else {
+                    $days .= "<span class=''>" . $display . "</span>";
+                }
             }
+        } else {
+            $days = "<p>Error Decoding JSON</p>";
         }
+        
+        
         $html = '
             <div class="habit">
                 <h1>' . $name . '</h1>

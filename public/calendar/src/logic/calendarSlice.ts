@@ -12,8 +12,9 @@ const API_ENDPOINT = "/app/api/habits/completed.php";
 
 // Calander Interfaces
 interface Calander {
-    weeks: Array<Week>
-}
+    weeks: Array<Week>,
+    jsonError: boolean
+};
 
 interface Week {
     number: number,
@@ -47,7 +48,7 @@ interface CalendarState {
     },
     status: string,
     calander: Calander,
-    habits: Array<Habit>
+    habits: Array<Habit>,
 }
 
 interface Habit {
@@ -83,7 +84,8 @@ export const generateCalendar = createAsyncThunk(
 
         // Create Calander Object
         let calendar: Calander = {
-            weeks: []
+            weeks: [],
+            jsonError: false
         }
 
         let current = {
@@ -157,75 +159,85 @@ export const generateCalendar = createAsyncThunk(
 
                     console.log("Habit Name: " + habit.name + "\nHabit Start: " + format(fromUnixTime(habit.start), "Pp") + "\nCurrent Date: " + format(DayDate, "Pp"));
 
-                    // Check if the habit start date is after the current date
-                    if(isAfter(DayDate, fromUnixTime(habit.start))) {
-                        // Check if the current date is before the computer date (to prevent showing uncompletes in the future)
-                        if(isBefore(DayDate, new Date())) {
-                            // Check if the habit is due today
-                            const CurrentDayNumber = parseInt(format(DayDate, "i")) - 1;
-                            
-                            // Checks that the parse int worked sucessfully
-                            if(!isNaN(CurrentDayNumber)) { 
-                                if(habit.frequency[CurrentDayNumber] == true) { // Means that the habit is due today
-                                    var completed = false;
-
-                                    // Check if the habit has been completed today by looping through every habit_complete and comparing the current day timestamp and the recorded timestamp
-                                    for(const habit_key in habit.completed) { // Using werid for loop because habit.completed isn't an array, instead a group of objects
-                                        const habit_completed = habit.completed[habit_key];
-
-                                        // Check that the habit was completed on the day
-                                        if(differenceInHours(fromUnixTime(parseInt(habit_completed.time_completed)), DayDate) > 0 && differenceInHours(fromUnixTime(parseInt(habit_completed.time_completed)), DayDate) < 24) {
-                                            console.log("COMPLETED");
-                                            completed = true;
-                                        }
-                                    }
-
-                                    if(!completed) {
-                                        console.log("[Output] Habit is due today - but not completed");
-                                        overall_progress.uncompleted++;
-
-                                        progress.push({id: habit.id, name: habit.name, status: OVERALL.Uncompleted})
-                                    } else {
-                                        overall_progress.completed++;
-                                        console.log("[Output] Habit is due today - completed");
-
-                                        progress.push({id: habit.id, name: habit.name, status: OVERALL.Completed})
-                                    }
-                                } else { // Means that the habit is not due today
-                                    overall_progress.empty++;
-                                    console.log("[Output] Habit is not due today");
-
-                                    // If a habit has been completed, show it
-                                    for(const habit_key in habit.completed) {
-                                        const habit_completed = habit.completed[habit_key];
-                                        
-                                        let completed = false;
-
-                                        // Check that the habit was completed on the day
-                                        if(differenceInHours(fromUnixTime(parseInt(habit_completed.time_completed)), DayDate) > 0 && differenceInHours(fromUnixTime(parseInt(habit_completed.time_completed)), DayDate) < 24) {
-                                            console.log("[Output] But, we found a habit completed, on this day, we should show");
-                                            completed = true;
-                                        }
-
-                                        if(completed == true) {
-                                            progress.push({id: habit.id, name: habit.name, status: OVERALL.CompletedWrongDay})
-                                        }
-
-                                    }
-                                }
-                            } else { 
-                                overall_progress.error++;
-                            }
-                        } else {
-                            console.log("[Output] Date is in the future");
-                            overall_progress.empty++;
-                        }
-
-                        
-                    } else {
+                    if(habit.frequency == null) {
                         overall_progress.empty++;
-                        console.log("[Output] Will not display date as the habit starting is after the current date ");
+                        calendar.jsonError = true;
+
+                        console.log("[Output] Found JSON Error in `" + habit.name + "`")
+                    } else {
+                        // Check if the habit start date is after the current date
+                        if(isAfter(DayDate, fromUnixTime(habit.start))) {
+                            // Check if the current date is before the computer date (to prevent showing uncompletes in the future)
+                            if(isBefore(DayDate, new Date())) {
+                                // Check if the habit is due today
+                                const CurrentDayNumber = parseInt(format(DayDate, "i")) - 1;
+                                
+                                // Checks that the parse int worked sucessfully
+                                if(!isNaN(CurrentDayNumber)) { 
+                                    if(habit.frequency[CurrentDayNumber] == true) { // Means that the habit is due today
+                                        var completed = false;
+
+                                        // Check if the habit has been completed today by looping through every habit_complete and comparing the current day timestamp and the recorded timestamp
+                                        for(const habit_key in habit.completed) { // Using werid for loop because habit.completed isn't an array, instead a group of objects
+                                            const habit_completed = habit.completed[habit_key];
+
+                                            // Check that the habit was completed on the day
+                                            if(differenceInHours(fromUnixTime(parseInt(habit_completed.time_completed)), DayDate) > 0 && differenceInHours(fromUnixTime(parseInt(habit_completed.time_completed)), DayDate) < 24) {
+                                                console.log("COMPLETED");
+                                                completed = true;
+                                            }
+                                        }
+
+                                        if(!completed) {
+                                            console.log("[Output] Habit is due today - but not completed");
+                                            overall_progress.uncompleted++;
+
+                                            progress.push({id: habit.id, name: habit.name, status: OVERALL.Uncompleted})
+                                        } else {
+                                            overall_progress.completed++;
+                                            console.log("[Output] Habit is due today - completed");
+
+                                            progress.push({id: habit.id, name: habit.name, status: OVERALL.Completed})
+                                        }
+                                    } else { // Means that the habit is not due today
+                                        overall_progress.empty++;
+                                        console.log("[Output] Habit is not due today");
+
+                                        // If a habit has been completed, show it
+                                        for(const habit_key in habit.completed) {
+                                            const habit_completed = habit.completed[habit_key];
+                                            
+                                            let completed = false;
+
+                                            // Check that the habit was completed on the day
+                                            if(differenceInHours(fromUnixTime(parseInt(habit_completed.time_completed)), DayDate) > 0 && differenceInHours(fromUnixTime(parseInt(habit_completed.time_completed)), DayDate) < 24) {
+                                                console.log("[Output] But, we found a habit completed, on this day, we should show");
+                                                completed = true;
+                                            }
+
+                                            if(completed == true) {
+                                                progress.push({id: habit.id, name: habit.name, status: OVERALL.CompletedWrongDay})
+                                                overall_progress.completed++;
+                                            }
+
+                                        }
+                                    }
+                                } else { 
+                                    overall_progress.error++;
+                                }
+                            } else {
+                                console.log("[Output] Date is in the future");
+                                overall_progress.empty++;
+                            }
+
+                            
+                        } else {
+                            overall_progress.empty++;
+                            console.log("[Output] Will not display date as the habit starting is after the current date ");
+                        }
                     }
+
+                    
 
                     console.groupEnd();
                 }
@@ -264,70 +276,12 @@ export const generateCalendar = createAsyncThunk(
             calendar.weeks.push(week);
         }
 
-        /*
-        // Request the API to get data
-        const APIData = await axios.get(API_ENDPOINT);    
-        // Loop through through each week
-        for(var i = 0; i < differenceInWeeks(LastDay, FirstDay) + 1; i++) {
-            // Get the monday of the current week based on the number of weeks into the month
-            let WeekDate = addWeeks(FirstDay, i);
     
-            // Create the week object
-            let week: Week = {
-                number: getISOWeek(WeekDate), // Set the week number basd based on the first day of the week
-                days: []
-            };
-    
-            // Loop through each day in the week (7 days in a week)
-            for(var l = 0; l < 7; l++) {
-                let DayDate = addDays(WeekDate, l); // Get the current day by adding the number of days inside the week
-    
-                // Checks if the day is inside the selected month
-                let inMonth = true;
-                if (parseInt(format(DayDate, "M")) != current.month + 1) { // +1 required as computers store the first month as zero, but humans store the first number as one
-                    inMonth = false;
-                }
-
-                let DayHabits:Array<Habit> = [];
-
-                // Loop through API Data page
-                for(const HabitKey in APIData.data) {
-                    for(const CompletedKey in APIData.data[HabitKey].times) {
-                        const APIDate = fromUnixTime(APIData.data[HabitKey].times[CompletedKey]);
-                        if(differenceInHours(APIDate, DayDate) < 24 && differenceInHours(APIDate, DayDate) > 0) {
-                            let Habit:Habit = {name: APIData.data[HabitKey].name, completed: true, completedID: parseInt(CompletedKey)};
-                            DayHabits.push(Habit);
-                        }
-                    }
-                }
-    
-                // Create Day Object
-                let day: Day = {
-                    dateNumber: parseInt(format(DayDate, "dd")), // Current Day
-                    display: format(DayDate, "EEEE") + ", " + format(DayDate, "do") + " of " + format(DayDate, "MMM") + ", " + format(DayDate, "yyyy"),
-                    inMonth: inMonth,
-                    habits: DayHabits
-                };
-    
-                // Add to the current week
-                week.days.push(day);
-            }
-    
-            // Add the week to the calender month
-            calendar.weeks.push(week);
-        }
-    
-
-        // Return
-        return {
-            calendar: calendar,
-            current: current
-        };*/
 
         return {
             calendar: calendar,
             current: current,
-            habits: habits
+            habits: habits,
         };    
     }
 )
