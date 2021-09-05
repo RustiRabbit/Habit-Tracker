@@ -154,3 +154,10 @@ const EDIT = {
 
     }
 }
+
+window.onload = () => {
+    if(window.location.search.substr(1) == "create=1") {
+        // Means that we should show the create habit page
+        CREATE.Show();
+    }    
+}

@@ -76,8 +76,8 @@
             }
         }
     } else {
-        $habits = "<p>Time to start something <span>new...</span></p>";
-        $goals = "<p>\"Life is empty without any <span>progress</span>\" - Me</p>";
+        $habits = "";
+        $goals = "";
     }
     $SQL_DB->CreateConnection()->close();
 ?>
@@ -88,6 +88,7 @@
         <title>Habit Tracker</title>
 
         <link rel="stylesheet" href="/public/css/pages/dashboard.css">
+        <link rel="stylesheet" href="/public/css/pages/new_user.css">
         <script src="/public/js/dashboard.js"></script>
 
         <?php include("partials/head.php") ?>
@@ -100,19 +101,26 @@
         </div>
 
         <div class="container">
-            <div class="content">
-                <h1>Complete a <span>habit!</span></h1>
-                <div class="items">
-                    <?php echo $habits ?>
+            <?php if($habits != "" && $goals != "") { ?>
+                <div class="content">
+                    <h1>Complete a <span>habit!</span></h1>
+                    <div class="items">
+                        <?php echo $habits ?>
+                    </div>
                 </div>
-            </div>
 
-            <div class="content">
-                <h1>How are you <span>going?</span></h1>
-                <div class="items">
-                    <?php echo $goals ?>
+                <div class="content">
+                    <h1>How are you <span>going?</span></h1>
+                    <div class="items">
+                        <?php echo $goals ?>
+                    </div>
                 </div>
-            </div>
+            <?php } else { ?>
+                <div class="empty">
+                    <h1>Welcome to the Habit Tracker</h1>
+                    <p><a href="/app/habits.php?create=1">Create your first habit</a></p>
+                </div>
+            <?php } ?>
         </div>
         
     </body>
