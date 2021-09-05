@@ -8,7 +8,7 @@
     --habit-font: "Poppins", sans-serif;
     --habit-size: 1.6em;
     --habit-color: #4D97DB;
-    --habit-hover: #0e7ce2;
+    --habit-hover: #2a557e;
     --habit-icon-size: 30px;
 
     /* Modal */
@@ -66,6 +66,13 @@
     fill: var(--title-color);
     width: var(--add-size);
     height: var(--add-size);
+    
+    border-radius: 50%;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.title>a>svg:hover {
+    background-color: #cfcdcd;
 }
 
 /* Create Habit Button */
@@ -188,7 +195,7 @@
     background-color: var(--modal-bg);
     border-radius: var(--modal-br);
 
-    width: 50%;
+    width: 600px;
 }
 
 .modal-content>.top {
