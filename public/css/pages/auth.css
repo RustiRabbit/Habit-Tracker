@@ -1,165 +1,131 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap');
-
 :root {
-    --bg: #79C3F0;
-    --bg-radius: 10px;
+    --border: #E0E0E0;
+    --border-br: 20px;
 
-    --input-color: white;
-    --input-radius: 5px;
-    --input-shadow: 1px 3px 2px rgba(0, 0, 0, 0.25);
-    --input-shadow-select: 2px 6px 8px rgba(0, 0, 0, 0.25);
+    --font: "Cabin", sans-serif;
+    --highlight: #4D97DB;
 
-    --text-color: #4C6085;
-    --text-size: 1.8em;
-    --text-font: 'Poppins', sans-serif;
-
-    --login-bg: #4D97DB;
-    --login-bg-hover: #4f95d6;
-    --login-text: white;
-    --login-radius: 3px;
+    --background: #C4C4C4;
 }
 
-html, body {
+body, html {
+    width: 100%;
     height: 100%;
     margin: 0;
 }
 
-.content {
-    width: 100%;
-    height: 100%;
-
+body {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.content>h1 {
-    font-size: 72px;
-    font-family: var(--text-font);
-    margin: 0;
+.container {
+    border: 1px solid var(--border);
+    border-radius: var(--border-br);
+
+    width: 450px;
 }
 
-.card {
-    width: 60%;
-    height: 60%;
-
-    background-color: var(--bg);
-    border-radius: var(--bg-radius);
-}
-
-.card>.form, form {
-    height: 100%;
-}
-
-.card>.form>form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;;
-}
-
-/* Message */
-.card>.message {
+.header {
+    font-family: var(--font);
     text-align: center;
-    font-family: var(--text-font);
-    color: var(--text-color);
 }
 
-/* Form Styling */
-form>.input {
-    width: 80%;
+.header>p {
+    background-color: var(--background);
+    color: var(--highlight);
+    border-radius: 10px;
+    padding: 0.5em;
+    margin: 0em 5em;
 }
 
-form>.input>input {
+.double {
+    display: flex;
+    flex-direction: row;
+}
+
+.text {
     width: 100%;
 
-    background-color: var(--input-color);
-    border-radius: var(--input-radius);
-    box-shadow: var(--input-shadow);
-    border: 0;
+    box-sizing: border-box;
 
-    padding: 1em;
-
-    transition: box-shadow 0.1s ease-in-out;
+    padding: 0.5em 1em;
 }
 
-form>.input>input:hover {
-    box-shadow: var(--input-shadow-select);
+.text>p {
+    font-family: var(--font);   
+
+    margin: 0.5em 0em;
+
+    user-select: none;
 }
 
-form>.input>input:focus {
+.text>input {
+    padding: 0.6em 0.5em;
+    border-radius: 5px;
+
+    border: 3px solid var(--highlight);
+
+    background-color: var(--background);
+
+    font-family: var(--font);
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.text>input:hover {
+    box-shadow: 5px 4px 9px -2px rgba(0, 0, 0, 0.25);
+}
+
+.text>input:focus {
     outline: none;
 }
 
-form>.input>p {
-    color: var(--text-color);
-    font-size: var(--text-size);
-    font-family: var(--text-font);
-
-    margin: 0.5em 0 0.5em 0;
+#right {
+    text-align: right;
 }
 
-/* Button */
-form>.button {
-    width: 100%;
+.footer {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    flex-direction: column;
-    padding-top: 20px;
+    justify-content: space-between;
+
+    padding: 0em 2em;
 }
 
-form>.button>input {
-    padding: 0.2em 2em;
-    font-size: 1.5em;
-    background-color: var(--login-bg);
+.footer>.bottom-message>a {
+    user-select: none;
+    text-decoration: none;
+    color: inherit;
 
-    color: var(--login-text);
+    font-family: var(--font);
+}
 
+.footer>.bottom-message>a>span {
+    color: var(--highlight);
+}
+
+.footer>input {
     border: 0;
-    border-radius: var(--login-radius);
+    border-radius: 10px;
 
-    font-family: var(--text-font);
+    padding: 0.8em 2.5em;
+
+    color: white;
+    background-color: var(--highlight);
+    font-family: var(--font);
+    font-size: 0.8em;
+
+    transition: box-shadow 0.2s ease-in-out;
 }
 
-form>.button>input:hover {
-    background-color: var(--login-bg-hover);
-}
+.footer>input:hover {
+    box-shadow: 5px 4px 9px -2px rgba(0, 0, 0, 0.25);
 
-/* Bottom Text */
-form>.button>p {
-    text-align: center;
-    width: 100%;
-    color: var(--text-color);
-    font-family: var(--text-font);
-
-}
-
-/* Mobile Responsive */
-@media only screen and (max-width: 600px) {
-    .card {
-        width: 95%;
-        height: 70%;
-        
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    
-    .card>.form>form {
-        justify-content: center;
-    }
-    
-    .card>.form, form {
-        height: auto;
-    }
-    
-    form>.input {
-        width: 90%;
-    }
-    
-    form>.input>input {
-        width: 100%;
-        box-sizing: border-box;
-    }
 }

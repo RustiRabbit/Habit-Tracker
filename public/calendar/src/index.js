@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import Application from "./components/Application";
-import { updatePosition } from './logic/calendarSlice';
+import { generateCalendar } from './logic/calendarSlice';
 import { store } from './logic/store';
 
-store.dispatch(updatePosition(new Date().toJSON()));
+store.dispatch(generateCalendar(new Date().toJSON()));
 
 ReactDOM.render(
     <React.StrictMode>

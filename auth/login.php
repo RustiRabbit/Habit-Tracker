@@ -50,32 +50,34 @@
 
     </head>
     <body>
-        <div class="content">
-            <h1>Sign In</h1>
-            <div class="card">
-                <div class="message">
-                    <?php echo $message ?>
-                </div>
-                <div class="form">
-                    <form action="" method="POST">
-                        <div class="input">
-                            <p>Email</p>
-                            <input type="text" id="email" name="email" value="">
-                        </div>
-                        <div class="input">
-                            <p>Password</p>
-                            <input type="password" id="password" name="password" value="">
-                        </div>
-                        <div class="button">
-                            <input type="submit" value="Sign In">
-                            <p>Dont have an account? <a href="/auth/signup.php">Sign Up</a></p>
-                        </div>
-                    </form>
-                </div>
-                
+        
+        <div class="container">
+            <div class="header">
+                <h1>Habit Tracker</h1>
+                <h3>Log In</h3>
+                <?php echo $message ?>
+
+            </div>
+
+            <div class="form">
+                <form method="post">
+                    <div class="text">
+                        <p>Email</p>
+                        <input type="text" name="email">
+                    </div>
+
+                    <div class="text">
+                        <p>Password</p>
+                        <input type="password" name="password">
+                    </div>
+
+                    <div class="footer">
+                        <p class="bottom-message"><a href="/auth/signup.php">Create an <span>account</span></a></p>
+                        <input type="submit" value="Login">
+                    </div>
+                </form>
             </div>
         </div>
-        
         
     </body>
 </html>

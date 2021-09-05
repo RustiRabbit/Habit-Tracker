@@ -3,10 +3,53 @@
     include("partials/auth_check.php");
     include("../php/CONFIG.php");
 
-    function createHabit($id, $name, $desc) {
+    function createHabit($id, $name, $desc, $frequency) {
+        $days = "";
+
+        $json = json_decode($frequency);
+
+        if(json_last_error() === 0) {
+            foreach($json as $key => $value) {
+                $display = "";
+                switch($key) {
+                    case 0:
+                        $display = "M";
+                        break;
+                    case 1:
+                        $display = "T";
+                        break;
+                    case 2:
+                        $display = "W";
+                        break;
+                    case 3:
+                        $display = "T";
+                        break;
+                    case 4:
+                        $display = "F";
+                        break;
+                    case 5:
+                        $display = "S";
+                        break;
+                    case 6:
+                        $display = "S";
+                        break;
+                }
+    
+                if($value == 1) {
+                    $days .= "<span class='selected'>" . $display . "</span>";
+                } else {
+                    $days .= "<span class=''>" . $display . "</span>";
+                }
+            }
+        } else {
+            $days = "<p>Error Decoding JSON</p>";
+        }
+        
+        
         $html = '
             <div class="habit">
                 <h1>' . $name . '</h1>
+                <div id="days">' . $days . '</div>
                 <a href="#" onclick="EDIT.Show(\''. $id . '\', \'' . $name . '\', \'' . $desc . '\')">' . file_get_contents("../public/images/icons/edit.svg") . '</a>
             </div>        
         ';
@@ -23,10 +66,7 @@
 
     if ($habits_result->num_rows > 0) { // Check that habits actually exist
         while($row = $habits_result->fetch_assoc()) { // Loop through the returned rows
-            $id = $row["id"];
-            $name = $row["name"];
-            $desc = $row["description"];
-            $habits .= createHabit($row["id"], $row["name"], $row["description"]); // Add Habit Element to the Page
+            $habits .= createHabit($row["id"], $row["name"], $row["description"], $row["frequency"]); // Add Habit Element to the Page
         }
     } else {
         $habits = '<p id="empty" onclick="CREATE.Show()">Create a habit</p>';
@@ -109,8 +149,8 @@
                     </div>
                 
                     <div class="bottom">
-                        <button type="submit" id="delete">Delete</button>
-                        <button type="submit" id="save" onclick="EDIT.UPDATE()">Create</button>
+                        <button type="submit" id="delete" onclick="EDIT.DELETE()">Delete</button>
+                        <button type="submit" id="save" onclick="EDIT.UPDATE()">Update</button>
                     </div>
                 </div>
             </div>

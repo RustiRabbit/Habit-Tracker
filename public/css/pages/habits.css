@@ -8,7 +8,7 @@
     --habit-font: "Poppins", sans-serif;
     --habit-size: 1.6em;
     --habit-color: #4D97DB;
-    --habit-hover: #0e7ce2;
+    --habit-hover: #2a557e;
     --habit-icon-size: 30px;
 
     /* Modal */
@@ -42,6 +42,8 @@
     --button-font: "Poppins", sans-serif;
 }
 
+/* Title */
+
 .title {
     display: flex;
     align-items: center;
@@ -64,7 +66,16 @@
     fill: var(--title-color);
     width: var(--add-size);
     height: var(--add-size);
+    
+    border-radius: 50%;
+    transition: background-color 0.1s ease-in-out;
 }
+
+.title>a>svg:hover {
+    background-color: #cfcdcd;
+}
+
+/* Create Habit Button */
 
 #empty {
     background-color: var(--title-color);
@@ -74,11 +85,29 @@
     padding: 0.2em 1.5em;
 
     transition: background-color 0.1s ease-in-out;
+
+    animation: pulse 3s ease-in-out infinite;
 }
 
 #empty:hover {
     background-color: #3189db;
 }
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 #4d97db1a;
+    }
+
+    50% {
+        box-shadow: 0 0 10px 14px #4d97db1a;
+    }
+
+    0% {
+        box-shadow: 0 0 0 0 #4d96db67;
+    }
+}
+
+/* Habit Display */
 
 .habits {
     display: flex;
@@ -93,11 +122,13 @@
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 
     width: 50%;
 
     margin: 0.8em;
+
+    position: relative;
 } 
 
 .habits>.habit>h1 {
@@ -106,6 +137,26 @@
     font-family: var(--habit-font);
     font-size: var(--habit-size);
     color: var(--habit-color);
+}
+
+.habits>.habit>#days {
+    font-family: var(--habit-font);
+}
+
+.habits>.habit>#days>span {
+    padding: 0.1em;
+}
+
+.habits>.habit>#days>.selected {
+    color: var(--habit-color);
+    font-weight: bold;
+
+}
+
+.habits>.habit>a {
+    position: absolute;
+    right: 0;
+    padding-right: 1em;
 }
 
 .habits>.habit>a>svg {
@@ -144,7 +195,7 @@
     background-color: var(--modal-bg);
     border-radius: var(--modal-br);
 
-    width: 50%;
+    width: 600px;
 }
 
 .modal-content>.top {

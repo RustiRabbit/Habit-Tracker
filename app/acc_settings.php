@@ -32,26 +32,39 @@
     }
 ?>
 
-<!DOCTYPE>
 <html>
     <head>
         <title>Habit Tracker</title>
         <?php include("partials/head.php") ?>
+        <link rel="stylesheet" href="/public/css/pages/acc_settings.css">
     </head>
     <body>
         <?php include("partials/navbar.php") ?>
-        <h1>Account Settings</h1>
-        <form action="/app/acc_settings.php" method="POST">
-            <label for="firstname">First name:</label><br>
-            <input type="text" id="firstname" name="firstname" value=<?php echo $user->first?>><br>
-            <label for="lastname">Last name:</label><br>
-            <input type="text" id="lastname" name="lastname" value=<?php echo $user->last?>><br>
-            <label for="email">Email:</label><br>
-            <input type="text" id="email" name="email" value=<?php echo $user->email?>><br>
-            <label for="password">Password:</label><br>
-            <input type="text" id="password" name="password" value=<?php echo $user->password?>><br>
-            <input type="submit" value="Save">
-        </form>
+        <div class="settings">
+            <h1>Account Settings</h1>
+            <form action="/app/acc_settings.php" method="POST">
+                <div class="input">
+                    <p>First Name:</p>
+                    <input type="text" id="firstname" name="firstname" value=<?php echo $user->first?>><br>
+                </div>
+                <div class="input">
+                    <p>Last Name:</p>
+                    <input type="text" id="lastname" name="lastname" value=<?php echo $user->last?>><br>
+                </div>
+                <div class="input">
+                    <p>Email:</p>
+                    <input type="text" id="email" name="email" value=<?php echo $user->email?>><br>
+                </div>
+                <div class="input">
+                    <p>Password:</p>
+                    <input type="text" id="password" name="password" value=<?php echo $user->password?>><br>
+                </div>
+                <div class="submit">
+                    <input type="submit" value="Save">
+                </div>
+            </form>
+        </div>
+        
     </body>
 
 </html>

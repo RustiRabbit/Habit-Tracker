@@ -1,9 +1,9 @@
 <?php 
     // Include Authentication
-    include("../../partials/auth_check.php");
+    include("../../../partials/auth_check.php");
     
     // Include Config
-    include("../../../php/CONFIG.php");
+    include("../../../../php/CONFIG.php");
 
     $habit_id = $_GET["habit_id"];
 

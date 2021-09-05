@@ -1,0 +1,90 @@
+
+:root {
+    --title-color: #4D97DB;
+    --title-font: "Cabin", sans-serif;
+    --title-font-size: 3em;
+
+    --sub-title-color: #4D97DB;
+    --sub-title-font: "Cabin", sans-serif;
+
+    --input-bg: #DEDDDD;
+    --input-stroke: #4D97DB;
+    --input-br: 5px;
+    --input-padding: 0.8em;
+    --input-shadow: 2px 1px 9px rgba(0, 0, 0, 0.25);
+}
+
+
+
+.settings>h1 {
+    text-align: center;
+
+    font-family: var(--title-font);
+    font-size: var(--title-font-size);
+    color: var(--title-color);
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form>.input {
+    width: 30%;
+
+    padding: 0.5em;
+}
+
+form>.input>p {
+    color: var(--sub-title-color);
+    font-family: var(--sub-title-font);
+    text-transform: uppercase;
+
+    margin: 0;
+}
+
+form>.input>input {
+    background-color: var(--input-bg);
+    border: 2px solid var(--input-stroke);
+    border-radius: var(--input-br);
+
+    padding: var(--input-padding);
+
+    font-family: var(--sub-title-font);
+
+    box-shadow: var(--input-shadow);
+
+    width: 100%;
+}
+
+form>.input>input:focus {
+    outline: none;
+}
+
+form>.submit {
+    display: flex;
+    justify-content: flex-end;
+
+    width: 30%;
+}
+
+form>.submit>input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+
+    background-color: #4D97DB;
+    padding: 0.5em 2em;
+    border-radius: 5px;
+    border: 0;
+
+    color: white;
+}
+
+form>.submit>input:hover {
+    background-color: #6aabe7;
+
+}
