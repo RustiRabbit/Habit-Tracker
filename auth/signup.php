@@ -32,37 +32,38 @@
 
     </head>
     <body>
-        <div class="content">
-            <h1>Signup</h1>
-            <div class="card">
-                <div class="form">
-                    <form action="" method="POST">
-
-                        <div class="input">
-                            <p>First Name</p>
-                            <input type="text" id="first_name" name="first_name" value="">
-                        </div>
-                        <div class="input">
-                            <p>Last Name</p>
-                            <input type="text" id="last_name" name="last_name" value="">
-                        </div>
-                        <div class="input">
-                            <p>Email</p>
-                            <input type="text" id="email" name="email" value="">
-                        </div>
-                        <div class="input">
-                            <p>Password</p>
-                            <input type="password" id="password" name="password" value="">
-                        </div>
-                        <div class="button">
-                            <input type="submit" value="Signup">
-                            <p>Already have an account? <a href="/auth/login.php">Log in</a></p>
-
-                        </div>
-                    </form>
-                </div>
-                
+        <div class="container">
+            <div class="header">
+                <h1>Habit Tracker</h1>
+                <h3>Sign up</h3>
             </div>
+
+            <div class="form">
+                <form method="post">
+                    <div class="double">
+                        <div class="text">
+                            <p>First</p>
+                            <input type="text" name="first_name">
+                        </div>
+                        <div class="text">
+                            <p id="right">Last</p>
+                            <input type="text" name="last_name">
+                        </div>
+                    </div>
+                    <div class="text">
+                        <p>Email</p>
+                        <input type="text" name="email">
+                    </div>
+                    <div class="text">
+                        <p>Password</p>
+                        <input type="password" name="password">
+                    </div>
+                    <div class="footer">
+                        <p class="bottom-message"><a href="/auth/login.php">Already have an <span>account?</span></a></p>
+                        <input type="submit" value="Signup">
+                    </div>
+                </form>
+            </div>   
         </div>
         
         
