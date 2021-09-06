@@ -23,7 +23,7 @@ CREATE TABLE habits (
     start_date int,
     user_id int,
     PRIMARY KEY (id),
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE habits_completed (
