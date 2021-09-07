@@ -42,7 +42,7 @@ const CREATE = {
 
                 response.text().then(function(data) {
                     if(data == "ok") {
-                        location.reload();
+                        location.replace("/app/habits.php");
                     } else {
                         alert("API Response returned error: " + data);
                     }

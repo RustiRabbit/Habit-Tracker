@@ -5,10 +5,11 @@ const Dashboard = {
         if(element.classList[0] == "completed") {
             Swal.fire({
                 title: "Confirmation",
-                text: "You've already completed this habit",
+                text: "You've already completed this habit today. Do you want to continue?",
                 showCancelButton: true,
                 confirmButtonText: "Continue",
                 cancelButtonText: "Abort",
+                confirmButtonColor: "#4D97DB",
                 icon: 'info',
             }).then((result) => {
                 if(result.isConfirmed) {

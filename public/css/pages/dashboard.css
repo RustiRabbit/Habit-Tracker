@@ -117,3 +117,8 @@
     color: white;
     font-family: var(--element-font);
 }
+
+/* Popup Styling */
+.swal2-title, .swal2-html-container {
+    font-family: var(--title-font);
+}

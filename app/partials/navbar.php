@@ -28,7 +28,7 @@
     <div class="bottom">
         <ul>
             <li class="<?php echo ($_SERVER['REQUEST_URI'] == '/app' or $_SERVER['REQUEST_URI'] == '/app/' or $_SERVER['REQUEST_URI'] == '/app/index.php') ? 'active':'' ?>"><a href="/app">dashboard</a></li>
-            <li class="<?php echo ($_SERVER['REQUEST_URI'] == '/app/habits.php') ? 'active':'' ?>"><a href="/app/habits.php">habits</a></li>
+            <li class="<?php echo ($_SERVER['REQUEST_URI'] == '/app/habits.php' or $_SERVER["REQUEST_URI"] == "/app/habits.php?create=1") ? 'active':'' ?>"><a href="/app/habits.php">habits</a></li>
             <li class="<?php echo ($_SERVER['REQUEST_URI'] == '/app/calendar.php') ? 'active':'' ?>"><a href="/app/calendar.php">calendar</a></li>
         </ul>
     </div>
