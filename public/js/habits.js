@@ -118,7 +118,7 @@ const EDIT = {
                 response.text().then(function(data) {
                     console.log(data);
                     if(data == "ok" || data == "nothing changed") {
-                        location.reload();
+                        location.replace("/app/habits.php");
                         console.log(URL.UPDATE + new URLSearchParams(Data));
                     } else {
                         alert("API Response returned error: " + data);
@@ -143,7 +143,7 @@ const EDIT = {
 
                 response.text().then(function(data) {
                     if(data == "ok") {
-                        location.reload();
+                        location.replace("/app/habits.php");
                         console.log(URL.DELETE + new URLSearchParams(Data));
                     } else {
                         alert("API Response returned error: " + data);
