@@ -37,7 +37,7 @@
 
         } else {
             // Username & Password not found
-            $message = "<p class='message'>" . "Username or Password was incorrect"  . "</p>";
+            $message = "<p class='message'>" . "Email or Password was incorrect"  . "</p>";
         }
     }
 ?>

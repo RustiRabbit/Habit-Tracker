@@ -1,0 +1,22 @@
+:root {
+    --color: #4D97DB;
+}
+
+.empty>h1 {
+    font-family: "Cabin", sans-serif;
+    font-size: 3em;
+    text-align: center;
+}
+
+.empty>p {
+    width: 100%;
+    text-align: center;
+
+}
+
+.empty>p>a {
+    user-select: none;
+    text-decoration: none;
+    color: var(--color);
+    font-family: "Cabin", sans-serif;
+}
