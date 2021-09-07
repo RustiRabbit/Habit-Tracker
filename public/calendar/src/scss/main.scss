@@ -167,6 +167,10 @@ td {
                     display: flex;
                     flex-direction: column;
 
+                    height: auto;
+                    max-height: 85%;
+                    overflow: overlay;
+
                     div {
                         padding: 0em 0.5em;
                         h2 {
