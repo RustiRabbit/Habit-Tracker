@@ -183,8 +183,11 @@ export const generateCalendar = createAsyncThunk(
 
                                             // Check that the habit was completed on the day
                                             if(differenceInHours(fromUnixTime(parseInt(habit_completed.time_completed)), DayDate) > 0 && differenceInHours(fromUnixTime(parseInt(habit_completed.time_completed)), DayDate) < 24) {
-                                                console.log("COMPLETED");
                                                 completed = true;
+
+                                                console.log("[Output] Habit is due today - completed");
+                                                overall_progress.completed++;
+                                                progress.push({id: habit.id, name: habit.name, status: OVERALL.Completed})
                                             }
                                         }
 
@@ -194,10 +197,6 @@ export const generateCalendar = createAsyncThunk(
 
                                             progress.push({id: habit.id, name: habit.name, status: OVERALL.Uncompleted})
                                         } else {
-                                            overall_progress.completed++;
-                                            console.log("[Output] Habit is due today - completed");
-
-                                            progress.push({id: habit.id, name: habit.name, status: OVERALL.Completed})
                                         }
                                     } else { // Means that the habit is not due today
                                         overall_progress.empty++;
