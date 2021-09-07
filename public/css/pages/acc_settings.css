@@ -52,9 +52,13 @@ form>.input>input {
 
     padding: var(--input-padding);
 
-    box-shadow: var(--input-shadow);
-
     width: 100%;
+
+    transition: 0.1s box-shadow ease-in-out;
+}
+
+form>.input>input:hover {
+    box-shadow: var(--input-shadow);
 }
 
 form>.input>input:focus {
