@@ -4,11 +4,7 @@ import type { RootState } from './store';
 import { getISOWeek, getMonth, getYear, startOfWeek, addWeeks, format, addDays, endOfWeek, isMonday, differenceInHours, differenceInWeeks, getUnixTime, fromUnixTime, isBefore, isAfter } from "date-fns";
 import Day from '../components/Calendar/Day';
 import axios from 'axios';
-import differenceInDays from 'date-fns/differenceInDays';
 import { OVERALL } from './types';
-import { Uncompleted } from '../components/Calendar/Completion';
-
-const API_ENDPOINT = "/app/api/habits/completed.php";
 
 // Calander Interfaces
 interface Calander {

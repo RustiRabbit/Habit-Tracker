@@ -7,15 +7,17 @@
     // Include Database
     include("../../../../php/CONFIG.php"); 
 
+    $result = array();
+
+    $conn = $SQL_DB->CreateConnection();
+
     $habits_sql = "SELECT * FROM `habits` WHERE `user_id`=" . $user->id;;
 
     if(isset($_GET["id"])) {
         $habits_sql = "SELECT * FROM `habits` WHERE `user_id`=" . $user->id . " AND id=" . $_GET["id"];
     }
 
-    $result = array();
 
-    $conn = $SQL_DB->CreateConnection();
     
     $habits_result = $conn->query($habits_sql);
     if($habits_result->num_rows > 0) {
