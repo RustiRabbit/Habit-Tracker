@@ -89,7 +89,10 @@
 
         <link rel="stylesheet" href="/public/css/pages/dashboard.css">
         <link rel="stylesheet" href="/public/css/pages/new_user.css">
+        
         <script src="/public/js/dashboard.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
         <?php include("partials/head.php") ?>
     </head>
