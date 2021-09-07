@@ -52,8 +52,6 @@ form>.input>input {
 
     padding: var(--input-padding);
 
-    font-family: var(--sub-title-font);
-
     box-shadow: var(--input-shadow);
 
     width: 100%;
