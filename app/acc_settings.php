@@ -60,7 +60,7 @@
                     <input type="text" id="password" name="password" value=<?php echo $user->password?>><br>
                 </div>
                 <div class="submit">
-                    <input type="submit" value="Save">
+                    <input type="submit" value="Update">
                 </div>
             </form>
         </div>
