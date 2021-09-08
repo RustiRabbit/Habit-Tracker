@@ -8,7 +8,7 @@ const Dashboard = {
                 text: "You've already completed this habit today. Do you want to continue?",
                 showCancelButton: true,
                 confirmButtonText: "Continue",
-                cancelButtonText: "Abort",
+                cancelButtonText: "Cancel",
                 confirmButtonColor: "#4D97DB",
                 icon: 'info',
             }).then((result) => {
