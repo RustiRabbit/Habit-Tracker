@@ -18,7 +18,7 @@
         $conn = $SQL_DB->CreateConnection();
 
         // Run SQL Query
-        $sql = "SELECT * FROM users WHERE email=\"" . $email . "\" AND password=\"" . $password . "\";";
+        $sql = "SELECT * FROM users WHERE email=\"" . $email . "\" AND BINARY password=\"" . $password . "\";";
         $result = $conn->query($sql);
 
         if($result->num_rows == 1) {

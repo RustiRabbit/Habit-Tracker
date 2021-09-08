@@ -15,6 +15,16 @@
     }
 
 
+    function sanitize($str) {
+        $edited = $str;
+        $edited = str_replace(['"',"'"], "", $edited);
+
+        $edited = htmlspecialchars($edited);
+
+        return $edited;
+
+    }
+
     // Database Config
     $SQL_DB = new DBCreds();
     $SQL_DB->servername = "localhost";

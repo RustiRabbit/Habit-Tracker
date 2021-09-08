@@ -27,11 +27,8 @@
                 } else {
                     $message = "<p>Error creating the user account</p>";
                 }
-    
             }
-        }
-
-        
+        }   
     }
 
 ?>
