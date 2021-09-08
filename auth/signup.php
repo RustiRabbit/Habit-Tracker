@@ -2,6 +2,8 @@
     // Include Database Authentication
     include_once("../php/CONFIG.php");
 
+    $message = "";
+
     // Check that Request is POST
     if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -10,16 +12,26 @@
         $email = $_POST["email"];
         $password = $_POST["password"];
 
-        $conn = $SQL_DB->CreateConnection();
-        
-        $sql = "INSERT INTO users (first_name, last_name, email, password) VALUES (\"" . $first_name .  "\", \"" . $last_name . "\", \"" . $email . "\", \"" . $password . "\")";
-        if ($conn->query($sql) === TRUE) {
-            // Means the insert has worked
-            header("Location: /auth/login.php?message=User Account created successfully");
+        if($first_name == "" or $last_name == "" or $password == "" or $email == "") {
+            $message = "<p>One of the fields is empty</p>";
         } else {
-            // Means the insert has failed
-            header("Location: /auth/login.php?message=User Account failed");
+            $conn = $SQL_DB->CreateConnection();
+        
+            $sql = "INSERT INTO users (first_name, last_name, email, password) VALUES (\"" . $first_name .  "\", \"" . $last_name . "\", \"" . $email . "\", \"" . $password . "\")";
+            if ($conn->query($sql) === TRUE) {
+                // Means the insert has worked
+                header("Location: /auth/login.php?message=User Account created successfully");
+            } else {
+                if(strpos($conn->error, "Duplicate") !== false) {
+                    $message = "<p>Email already exists</p>";
+                } else {
+                    $message = "<p>Error creating the user account</p>";
+                }
+    
+            }
         }
+
+        
     }
 
 ?>
@@ -36,6 +48,7 @@
             <div class="header">
                 <h1>Habit Tracker</h1>
                 <h3>Sign up</h3>
+                <?php echo $message ?>
             </div>
 
             <div class="form">
