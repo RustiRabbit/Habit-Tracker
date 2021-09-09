@@ -157,18 +157,15 @@ td {
 
                             fill: $popup-highlight-text-color;
                         }
-                    }
-
-                    
+                    }                    
                 }
-
 
                 .habits {
                     display: flex;
                     flex-direction: column;
 
                     height: auto;
-                    max-height: 85%;
+                    max-height: 80%;
                     overflow: overlay;
 
                     div {

@@ -92,6 +92,9 @@
 
         <div class="habits">
             <?php echo $habits; ?>
+            <div class="footer">
+                <p><a href="/app">Go to the dashboard to complete a habit!</a></p>
+            </div>
         </div>
 
         <form id="edit-form" onsubmit="return false">

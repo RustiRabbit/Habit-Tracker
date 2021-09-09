@@ -131,6 +131,18 @@
     position: relative;
 } 
 
+.habits>.footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.habits>.footer>p>a {
+    text-decoration: none;
+    color: var(--habit-color);
+    font-family: var(--habit-font);
+    user-select: none;
+}
+
 .habits>.habit>h1 {
     margin: 0.5em;
 

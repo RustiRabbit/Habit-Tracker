@@ -53,6 +53,12 @@ body {
     margin: 0;
 }
 
+.navbar>.top>h1>a {
+    user-select: none;
+    text-decoration: none;
+    color: inherit;
+}
+
 
 /* Account Settings */
 .navbar>.top>.account {

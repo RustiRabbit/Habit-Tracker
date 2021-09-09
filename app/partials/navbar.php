@@ -14,7 +14,7 @@
 
 <div class="navbar">
     <div class="top">
-        <h1>Habit Tracker</h1>
+        <h1><a href="/app">Habit Tracker</a></h1>
         <div class="account">
             <p><?php echo $name ?></p>
             <a href="/app/acc_settings.php">
